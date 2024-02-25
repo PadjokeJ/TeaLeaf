@@ -3,6 +3,7 @@ package io.itch.padjokej.tealeaf.item;
 import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
+import io.itch.padjokej.tealeaf.item.DrinkableItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -20,6 +21,18 @@ public class ModItems
             new Item(new FabricItemSettings().group(ItemGroup.BREWING)));
     public static final Item MANGROVE_OAK_TEALEAF = registerItem("mangrove_oak_tea_leaf",
             new Item(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item SPRUCE_TEA = registerItem("spruce_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item OAK_TEA = registerItem("oak_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item ACACIA_TEA = registerItem("acacia_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item BIRCH_TEA = registerItem("birch_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item DARK_OAK_TEA = registerItem("dark_oak_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
+    public static final Item MANGROVE_OAK_TEA = registerItem("mangrove_oak_tea",
+            new DrinkableItem(new FabricItemSettings().group(ItemGroup.BREWING)));
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(TeaLeaf.MOD_ID,name), item);
     }
