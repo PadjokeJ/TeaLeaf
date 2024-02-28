@@ -1,5 +1,6 @@
 package io.itch.padjokej.tealeaf;
 
+import io.itch.padjokej.tealeaf.block.ModBlocks;
 import io.itch.padjokej.tealeaf.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class TeaLeaf implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 		LOGGER.info("TeaLeaf initiated B)");
 	}

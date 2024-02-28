@@ -1,29 +1,43 @@
 package io.itch.padjokej.tealeaf.block;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.StateManager;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.InventoryProvider;
-import net.minecraft.block.Waterloggable;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.inventory.SidedInventory;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.block.Block;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import org.jetbrains.annotations.Nullable;
-import net.minecraft.inventory.Inventories;
 
-public class TeaPotBlock extends BlockWithEntity implements InventoryProvider, Waterloggable
+
+public class TeaPotBlock extends HorizontalFacingBlock
 {
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public TeaPotBlock(Settings settings) {
+        super(settings);
+    }
+
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
     @Override
-    public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
-        return null;
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
     }
 }

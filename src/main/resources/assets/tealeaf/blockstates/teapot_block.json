@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tealeaf:block/teapot_block"
+    },
+    "facing=south": {
+      "model": "tealeaf:block/teapot_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tealeaf:block/teapot_block",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "tealeaf:block/teapot_block",
+      "y": 90
+    }
+  }
+}
