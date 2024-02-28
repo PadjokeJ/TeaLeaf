@@ -1,4 +1,4 @@
-package io.itch.padjokej.tealeaf.block;
+package io.itch.padjokej.tealeaf.block.teapot;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.block.HorizontalFacingBlock;

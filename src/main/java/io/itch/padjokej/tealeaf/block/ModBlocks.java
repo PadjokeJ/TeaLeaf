@@ -1,6 +1,7 @@
 package io.itch.padjokej.tealeaf.block;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
+import io.itch.padjokej.tealeaf.block.teapot.TeaPotBlock;
 import io.itch.padjokej.tealeaf.item.ModItemGroup;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
