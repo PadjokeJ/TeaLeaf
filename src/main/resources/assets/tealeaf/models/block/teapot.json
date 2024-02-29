@@ -1,9 +1,9 @@
 {
   "credit": "Made with Blockbench",
   "textures": {
-    "1": "teapot",
-    "2": "block/texture",
-    "3": "block/texture",
+    "1": "tealeaf:block/teapot/teapot",
+    "2": "tealeaf:block/teapot/lid_handle",
+    "3": "tealeaf:block/teapot/lid",
     "particle": "teapot"
   },
   "elements": [
@@ -127,5 +127,43 @@
         "down": {"uv": [3, 0, 2, 1], "texture": "#2"}
       }
     }
-  ]
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [16, 180, 0],
+      "translation": [0, 2.5, -1.5],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [16, 180, 0],
+      "translation": [0, 2.5, -1.5],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "firstperson_righthand": {
+      "rotation": [9, -159, 0],
+      "translation": [0, 4.5, 0.5],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "firstperson_lefthand": {
+      "rotation": [9, -159, 0],
+      "translation": [0, 4.5, 0.5],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "ground": {
+      "translation": [0, 1.25, 0],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "gui": {
+      "rotation": [0, -90, 0],
+      "translation": [0, 3.5, 0]
+    },
+    "head": {
+      "rotation": [0, 180, 0],
+      "translation": [0.5, 14.5, -1]
+    },
+    "fixed": {
+      "rotation": [0, 90, 0],
+      "translation": [0, 3.5, 0]
+    }
+  }
 }
