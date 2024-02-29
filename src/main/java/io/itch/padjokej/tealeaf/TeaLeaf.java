@@ -1,6 +1,7 @@
 package io.itch.padjokej.tealeaf;
 
 import io.itch.padjokej.tealeaf.block.ModBlocks;
+import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ public class TeaLeaf implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 
 		LOGGER.info("TeaLeaf initiated B)");
 	}
