@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "level=1": {
-      "model": "minecraft:block/water_teapot_full"
-    }
-  }
-}

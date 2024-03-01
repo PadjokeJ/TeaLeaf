@@ -3,14 +3,18 @@
   "item.tealeaf.dark_oak_tea_leaf": "Dark Oak Tea Leaf",
   "item.tealeaf.birch_tea_leaf": "Birch Tea Leaf",
   "item.tealeaf.oak_tea_leaf": "Oak Tea Leaf",
+  "item.tealeaf.mangrove_tea_leaf": "Mangrove Tea Leaf",
+  "item.tealeaf.jungle_tea_leaf": "Jungle Tea Leaf",
   "item.tealeaf.acacia_tea_leaf": "Acacia Tea Leaf",
 
   "item.tealeaf.spruce_tea": "Spruce Tea",
   "item.tealeaf.dark_oak_tea": "Dark Oak Tea",
   "item.tealeaf.birch_tea": "Birch Tea",
   "item.tealeaf.oak_tea": "Oak Tea",
+  "item.tealeaf.mangrove_tea": "Mangrove Tea",
+  "item.tealeaf.jungle_tea": "Jungle Tea",
   "item.tealeaf.acacia_tea": "Acacia Tea",
 
-  "block.tealeaf.teapot_block": "Teapot"
+  "block.tealeaf.teapot": "Teapot"
 
 }
