@@ -137,7 +137,7 @@ public class TeapotBlockEntity extends BlockEntity {
         }
         if(entity.teaType > 0)
         {
-            world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
+            /*world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);*/
             entity.boilTimer++;
             markDirty(world, pos, state);
             if(entity.boilTimer >= entity.maxBoilTimer)
