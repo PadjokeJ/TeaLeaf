@@ -14,7 +14,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class TeapotBlockEntity extends BlockEntity {
@@ -63,6 +62,9 @@ public class TeapotBlockEntity extends BlockEntity {
             }
         };
     }
+
+
+
     protected void writeNbt (NbtCompound nbt)
     {
         super.writeNbt(nbt);
@@ -127,6 +129,17 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         if(world.isClient())
         {
+            if(entity.hasWater == 0)
+            {
+                return;
+            }
+            if(entity.teaType > 0) {
+                if (entity.boilTimer >= entity.maxBoilTimer)
+                {
+                    return;
+                }
+                world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
+            }
             return;
         }
         if(entity.hasWater == 0)
@@ -151,7 +164,6 @@ public class TeapotBlockEntity extends BlockEntity {
             markDirty(world, pos, state);
         }
     }
-
 
     private void makeTea(int type)
     {

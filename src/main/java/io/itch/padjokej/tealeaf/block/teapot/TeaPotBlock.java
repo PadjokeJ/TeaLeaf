@@ -101,4 +101,5 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.TEAPOT, TeapotBlockEntity::tick);
     }
+
 }
