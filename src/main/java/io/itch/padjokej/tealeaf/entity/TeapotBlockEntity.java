@@ -4,10 +4,17 @@ import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class TeapotBlockEntity extends BlockEntity {
@@ -18,6 +25,7 @@ public class TeapotBlockEntity extends BlockEntity {
     private int boilTimer;
     private int maxBoilTimer = 100;
     private int teaResult;
+    public int hasWater;
     public TeapotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TEAPOT, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
@@ -31,6 +39,7 @@ public class TeapotBlockEntity extends BlockEntity {
                     case 2: return TeapotBlockEntity.this.boilTimer;
                     case 3: return TeapotBlockEntity.this.maxBoilTimer;
                     case 4: return TeapotBlockEntity.this.teaResult;
+                    case 5: return TeapotBlockEntity.this.hasWater;
                     default: return 0;
                 }
             }
@@ -44,6 +53,7 @@ public class TeapotBlockEntity extends BlockEntity {
                     case 2: TeapotBlockEntity.this.boilTimer = value; break;
                     case 3: TeapotBlockEntity.this.maxBoilTimer = value; break;
                     case 4: TeapotBlockEntity.this.teaResult = value; break;
+                    case 5: TeapotBlockEntity.this.hasWater = value; break;
                 }
             }
 
@@ -60,6 +70,7 @@ public class TeapotBlockEntity extends BlockEntity {
         nbt.putInt("teapot.teaType", teaType);
         nbt.putInt("teapot.boilTimer", boilTimer);
         nbt.putInt("teapot.teaResult", teaResult);
+        nbt.putInt("teapot.hasWater", hasWater);
     }
     public void readNbt (NbtCompound nbt)
     {
@@ -68,15 +79,65 @@ public class TeapotBlockEntity extends BlockEntity {
         teaType = nbt.getInt("teapot.teaType");
         boilTimer = nbt.getInt("teapot.boilTimer");
         teaResult = nbt.getInt("teapot.teaResult");
+        hasWater = nbt.getInt("teapot.hasWater");
+
     }
+    public void addWater ()
+    {
+        hasWater = 1;
+    }
+    public void removeWater ()
+    {
+        hasWater = 0;
+    }
+    public void addTealeaf (Item item)
+    {
+        if(item.getName() == Text.of("acacia_tealeaf"))
+        {
+            teaType = 1;
+        }
+        if(item.getName() == Text.of("birch_tealeaf"))
+        {
+            teaType = 2;
+        }
+        if(item.getName() == Text.of("dark_oak_tealeaf"))
+        {
+            teaType = 3;
+        }
+        if(item.getName() == Text.of("jungle_tealeaf"))
+        {
+            teaType = 4;
+        }
+        if(item.getName() == Text.of("mangrove_tealeaf"))
+        {
+            teaType = 5;
+        }
+        if(item.getName() == Text.of("oak_tealeaf"))
+        {
+            teaType = 6;
+        }
+        if(item.getName() == Text.of("spruce_tealeaf"))
+        {
+            teaType = 7;
+        }
+
+    }
+
     public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
     {
         if(world.isClient())
         {
             return;
         }
+        if(entity.hasWater == 0)
+        {
+            entity.resetProgress();
+            markDirty(world, pos, state);
+            return;
+        }
         if(entity.teaType > 0)
         {
+            world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
             entity.boilTimer++;
             markDirty(world, pos, state);
             if(entity.boilTimer >= entity.maxBoilTimer)
@@ -90,6 +151,7 @@ public class TeapotBlockEntity extends BlockEntity {
             markDirty(world, pos, state);
         }
     }
+
 
     private void makeTea(int type)
     {

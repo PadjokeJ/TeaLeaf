@@ -15,6 +15,8 @@
   "item.tealeaf.jungle_tea": "Jungle Tea",
   "item.tealeaf.acacia_tea": "Acacia Tea",
 
-  "block.tealeaf.teapot": "Teapot"
+  "block.tealeaf.teapot": "Teapot",
+
+  "itemGroup.tealeaf.tealeaf": "Tealeaf"
 
 }

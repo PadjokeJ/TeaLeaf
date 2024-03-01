@@ -13,8 +13,7 @@ import net.minecraft.util.registry.RegistryKey;
 public class TagsRegistry {
 
     public static final TagKey<Block> HEAT_SOURCES = create("heat_sources", Registry.BLOCK_KEY);
-    public static final TagKey<Block> HEAT_CONDUCTORS = create("heat_conductors", Registry.BLOCK_KEY);
-    public static final TagKey<Block> TRAY_HEAT_SOURCES = create("tray_heat_sources", Registry.BLOCK_KEY);
+    public static final TagKey<Item> TEA_LEAVES = create("tealeaves", Registry.ITEM_KEY);
 
 
     private static <E> TagKey<E> create(String pathName, RegistryKey<Registry<E>> registry) {

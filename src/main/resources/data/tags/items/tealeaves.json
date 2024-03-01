@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tealeaf:oak_tealeaf",
+    "tealeaf:jungle_tealeaf",
+    "tealeaf:acacia_tealeaf",
+    "tealeaf:spruce_tealeaf",
+    "tealeaf:mangrove_tealeaf",
+    "tealeaf:birch_tealeaf",
+    "tealeaf:dark_ak_tealeaf"
+  ]
+}
