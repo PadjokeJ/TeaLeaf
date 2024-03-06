@@ -82,10 +82,8 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                     teapotBlockEntity.removeWater();
                     return ActionResult.SUCCESS;
                 }
-                if(player.getStackInHand(hand).isIn(TagsRegistry.TEA_LEAVES))
-                {
-                    teapotBlockEntity.addTealeaf(player.getStackInHand(hand).getItem());
-                }
+                teapotBlockEntity.addTealeaf(player.getStackInHand(hand).getItem().toString());
+                player.sendMessage(Text.of(player.getStackInHand(hand).getItem().toString()));
             }
         }
         return ActionResult.SUCCESS;

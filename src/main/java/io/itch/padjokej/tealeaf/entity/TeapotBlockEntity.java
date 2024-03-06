@@ -1,26 +1,35 @@
 package io.itch.padjokej.tealeaf.entity;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
+import io.itch.padjokej.tealeaf.registry.PacketsRegistry;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.Objects;
+
 public class TeapotBlockEntity extends BlockEntity {
 
     protected final PropertyDelegate propertyDelegate;
     private int level;
-    private int teaType;
+    public int teaType;
     private int boilTimer;
     private int maxBoilTimer = 100;
     private int teaResult;
@@ -64,7 +73,7 @@ public class TeapotBlockEntity extends BlockEntity {
     }
 
 
-
+    @Override
     protected void writeNbt (NbtCompound nbt)
     {
         super.writeNbt(nbt);
@@ -74,6 +83,7 @@ public class TeapotBlockEntity extends BlockEntity {
         nbt.putInt("teapot.teaResult", teaResult);
         nbt.putInt("teapot.hasWater", hasWater);
     }
+    @Override
     public void readNbt (NbtCompound nbt)
     {
         super.readNbt(nbt);
@@ -92,76 +102,65 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         hasWater = 0;
     }
-    public void addTealeaf (Item item)
+    public void addTealeaf (String item)
     {
-        if(item.getName() == Text.of("acacia_tealeaf"))
+        switch (item)
         {
-            teaType = 1;
-        }
-        if(item.getName() == Text.of("birch_tealeaf"))
-        {
-            teaType = 2;
-        }
-        if(item.getName() == Text.of("dark_oak_tealeaf"))
-        {
-            teaType = 3;
-        }
-        if(item.getName() == Text.of("jungle_tealeaf"))
-        {
-            teaType = 4;
-        }
-        if(item.getName() == Text.of("mangrove_tealeaf"))
-        {
-            teaType = 5;
-        }
-        if(item.getName() == Text.of("oak_tealeaf"))
-        {
-            teaType = 6;
-        }
-        if(item.getName() == Text.of("spruce_tealeaf"))
-        {
-            teaType = 7;
+            case "acacia_tea_leaf": teaType = 1;
+            break;
+            case "birch_tea_leaf": teaType = 2;
+            break;
+            case "dark_oak_tea_leaf": teaType = 3;
+            break;
+            case "jungle_tea_leaf": teaType = 4;
+            break;
+            case "mangrove_tea_leaf": teaType = 5;
+            break;
+            case "oak_tea_leaf": teaType = 6;
+            break;
+            case "spruce_tea_leaf": teaType = 7;
+            break;
         }
 
     }
-
+    static PacketByteBuf sendParticlePacket(Double x, Double y, Double z)
+    {
+        var buf = PacketByteBufs.create();
+        buf.writeDouble(x);
+        buf.writeDouble(y);
+        buf.writeDouble(z);
+        return buf;
+    }
     public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
     {
         if(world.isClient())
         {
-            if(entity.hasWater == 0)
+            return;
+        }
+        if(!world.isClient) {
+            if (entity.hasWater == 0)
             {
+                entity.resetProgress();
+                markDirty(world, pos, state);
                 return;
             }
-            if(entity.teaType > 0) {
-                if (entity.boilTimer >= entity.maxBoilTimer)
-                {
-                    return;
-                }
-                world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
-            }
-            return;
-        }
-        if(entity.hasWater == 0)
-        {
-            entity.resetProgress();
-            markDirty(world, pos, state);
-            return;
-        }
-        if(entity.teaType > 0)
-        {
-            /*world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);*/
-            entity.boilTimer++;
-            markDirty(world, pos, state);
-            if(entity.boilTimer >= entity.maxBoilTimer)
-            {
-                entity.makeTea(entity.teaType);
-            }
 
-        }else
-        {
-            entity.resetProgress();
-            markDirty(world, pos, state);
+            if (entity.teaType > 0) {
+                /*world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);*/
+                entity.boilTimer++;
+                markDirty(world, pos, state);
+                if (entity.boilTimer >= entity.maxBoilTimer) {
+                    entity.makeTea(entity.teaType);
+                }
+                for (ServerPlayerEntity player : PlayerLookup.tracking(entity))
+                {
+                    ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET, sendParticlePacket((double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ()));
+                }
+
+            } else {
+                entity.resetProgress();
+                markDirty(world, pos, state);
+            }
         }
     }
 

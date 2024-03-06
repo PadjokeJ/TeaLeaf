@@ -1,8 +1,10 @@
 package io.itch.padjokej.tealeaf.registry;
 import io.itch.padjokej.tealeaf.TeaLeaf;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -20,7 +22,8 @@ public class TagsRegistry {
         return TagKey.of(registry, new Identifier(TeaLeaf.MOD_ID, pathName));
     }
 
-    private TagsRegistry() throws InstantiationException {
+    private TagsRegistry() throws InstantiationException
+    {
         throw new InstantiationException("Constant class cannot be instantiate");
     }
 
