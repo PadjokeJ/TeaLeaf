@@ -12,11 +12,11 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
 
 public class TealeafClient implements ClientModInitializer {
-    public void createParticle(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender)
+    public static void createTeapotParticle(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender)
     {
-        var x = buf.readDouble();
-        var y = buf.readDouble();
-        var z = buf.readDouble();
+        double x = buf.readDouble();
+        double y = buf.readDouble();
+        double z = buf.readDouble();
         client.particleManager.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0.05, 0);
     }
 
@@ -24,7 +24,7 @@ public class TealeafClient implements ClientModInitializer {
     public void onInitializeClient() {
         ClientPlayNetworking.registerGlobalReceiver(
                 PacketsRegistry.BOIL_PARTICLE_PACKET,
-                (client, handler, buf, responseSender) -> createParticle(client, handler, buf, responseSender)
+                TealeafClient::createTeapotParticle
         );
     }
 

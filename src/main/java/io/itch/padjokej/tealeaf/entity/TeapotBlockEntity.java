@@ -32,7 +32,7 @@ public class TeapotBlockEntity extends BlockEntity {
     public int teaType;
     private int boilTimer;
     private int maxBoilTimer = 100;
-    private int teaResult;
+    public int teaResult;
     public int hasWater;
     public TeapotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TEAPOT, pos, state);
@@ -123,9 +123,9 @@ public class TeapotBlockEntity extends BlockEntity {
         }
 
     }
-    static PacketByteBuf sendParticlePacket(Double x, Double y, Double z)
+    public static PacketByteBuf sendParticlePacket(double x, double y, double z)
     {
-        var buf = PacketByteBufs.create();
+        PacketByteBuf buf = PacketByteBufs.create();
         buf.writeDouble(x);
         buf.writeDouble(y);
         buf.writeDouble(z);
@@ -146,7 +146,7 @@ public class TeapotBlockEntity extends BlockEntity {
             }
 
             if (entity.teaType > 0) {
-                /*world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);*/
+                world.addImportantParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
                 entity.boilTimer++;
                 markDirty(world, pos, state);
                 if (entity.boilTimer >= entity.maxBoilTimer) {
@@ -154,7 +154,8 @@ public class TeapotBlockEntity extends BlockEntity {
                 }
                 for (ServerPlayerEntity player : PlayerLookup.tracking(entity))
                 {
-                    ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET, sendParticlePacket((double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ()));
+                    ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET,
+                            sendParticlePacket((double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ()));
                 }
 
             } else {

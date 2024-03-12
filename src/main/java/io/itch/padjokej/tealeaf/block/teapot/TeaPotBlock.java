@@ -3,6 +3,7 @@ package io.itch.padjokej.tealeaf.block.teapot;
 import io.itch.padjokej.tealeaf.TeaLeaf;
 import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.entity.TeapotBlockEntity;
+import io.itch.padjokej.tealeaf.item.ModItems;
 import io.itch.padjokej.tealeaf.registry.TagsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -82,8 +83,29 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                     teapotBlockEntity.removeWater();
                     return ActionResult.SUCCESS;
                 }
+                if(player.getStackInHand(hand).getItem() == Items.GLASS_BOTTLE && teapotBlockEntity.teaResult > 0)
+                {
+                    switch (teapotBlockEntity.teaResult)
+                    {
+                        case 1: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.ACACIA_TEA)));
+                            break;
+                        case 2: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.BIRCH_TEA)));
+                            break;
+                        case 3: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.DARK_OAK_TEA)));
+                            break;
+                        case 4: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
+                            break;
+                        case 5: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_OAK_TEA)));
+                            break;
+                        case 6: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
+                            break;
+                        case 7: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
+                            break;
+                    }
+                    teapotBlockEntity.removeWater();
+                }
+
                 teapotBlockEntity.addTealeaf(player.getStackInHand(hand).getItem().toString());
-                player.sendMessage(Text.of(player.getStackInHand(hand).getItem().toString()));
             }
         }
         return ActionResult.SUCCESS;
