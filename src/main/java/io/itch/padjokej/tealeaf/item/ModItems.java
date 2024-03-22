@@ -13,19 +13,19 @@ import net.minecraft.util.registry.Registry;
 public class ModItems
 {
     public static final Item SPRUCE_TEALEAF = registerItem("spruce_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item OAK_TEALEAF = registerItem("oak_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item ACACIA_TEALEAF = registerItem("acacia_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item JUNGLE_TEALEAF = registerItem("jungle_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item BIRCH_TEALEAF = registerItem("birch_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item DARK_OAK_TEALEAF = registerItem("dark_oak_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item MANGROVE_OAK_TEALEAF = registerItem("mangrove_tea_leaf",
-            new Item(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
+            new SniffableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF)));
     public static final Item SPRUCE_TEA = registerItem("spruce_tea",
             new DrinkableItem(new FabricItemSettings().group(ModItemGroup.TEALEAF).recipeRemainder(Items.GLASS_BOTTLE)));
     public static final Item OAK_TEA = registerItem("oak_tea",
