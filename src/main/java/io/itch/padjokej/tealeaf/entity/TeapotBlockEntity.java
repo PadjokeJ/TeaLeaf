@@ -128,7 +128,7 @@ public class TeapotBlockEntity extends BlockEntity {
                 }
                 if(world instanceof ServerWorld serverWorld)
                 {
-                    var oP = state.get(Properties.FACING).getUnitVector();
+                    var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
                     oP.scale(0.5f);
                     var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
 
