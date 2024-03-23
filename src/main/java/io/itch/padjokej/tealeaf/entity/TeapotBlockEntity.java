@@ -31,12 +31,14 @@ public class TeapotBlockEntity extends BlockEntity {
     private int level;
     public int teaType;
     private int boilTimer;
-    private int maxBoilTimer = 100;
+    private int maxBoilTimer = 200;
     public int teaResult;
     public int hasWater;
-    public TeapotBlockEntity(BlockPos pos, BlockState state) {
+    public TeapotBlockEntity(BlockPos pos, BlockState state)
+    {
         super(ModBlockEntities.TEAPOT, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegate = new PropertyDelegate()
+        {
             @Override
             public int get(int index)
             {
@@ -102,26 +104,9 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         hasWater = 0;
     }
-    public void addTealeaf (String item)
+    public void addTealeaf (int type)
     {
-        switch (item)
-        {
-            case "acacia_tea_leaf": teaType = 1;
-            break;
-            case "birch_tea_leaf": teaType = 2;
-            break;
-            case "dark_oak_tea_leaf": teaType = 3;
-            break;
-            case "jungle_tea_leaf": teaType = 4;
-            break;
-            case "mangrove_tea_leaf": teaType = 5;
-            break;
-            case "oak_tea_leaf": teaType = 6;
-            break;
-            case "spruce_tea_leaf": teaType = 7;
-            break;
-        }
-
+        teaType = type;
     }
     public static PacketByteBuf sendParticlePacket(double x, double y, double z)
     {
@@ -133,11 +118,8 @@ public class TeapotBlockEntity extends BlockEntity {
     }
     public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
     {
-        if(world.isClient())
+        if(!world.isClient)
         {
-            return;
-        }
-        if(!world.isClient) {
             if (entity.hasWater == 0)
             {
                 entity.resetProgress();
@@ -145,11 +127,13 @@ public class TeapotBlockEntity extends BlockEntity {
                 return;
             }
 
-            if (entity.teaType > 0) {
+            if (entity.teaType > 0)
+            {
                 world.addImportantParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
                 entity.boilTimer++;
                 markDirty(world, pos, state);
-                if (entity.boilTimer >= entity.maxBoilTimer) {
+                if (entity.boilTimer >= entity.maxBoilTimer)
+                {
                     entity.makeTea(entity.teaType);
                 }
                 for (ServerPlayerEntity player : PlayerLookup.tracking(entity))
@@ -158,7 +142,8 @@ public class TeapotBlockEntity extends BlockEntity {
                             sendParticlePacket((double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ()));
                 }
 
-            } else {
+            } else
+            {
                 entity.resetProgress();
                 markDirty(world, pos, state);
             }

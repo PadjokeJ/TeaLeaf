@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tealeaf:item/birch_tea"
+    "layer0": "tealeaf:item/tea_cup_full"
   }
 }

@@ -67,7 +67,8 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     public ActionResult onUse(BlockState state, World world, BlockPos pos,
                               PlayerEntity player, Hand hand, BlockHitResult hit)
     {
-        if (!world.isClient) {
+        if (!world.isClient)
+        {
             if(world.getBlockEntity(pos) instanceof TeapotBlockEntity teapotBlockEntity)
             {
                 player.sendMessage(Text.of(String.valueOf(teapotBlockEntity.hasWater)));
@@ -83,7 +84,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                     teapotBlockEntity.removeWater();
                     return ActionResult.SUCCESS;
                 }
-                if(player.getStackInHand(hand).getItem() == Items.GLASS_BOTTLE && teapotBlockEntity.teaResult > 0)
+                if(player.getStackInHand(hand).getItem() == ModItems.TEA_CUP && teapotBlockEntity.teaResult > 0)
                 {
                     switch (teapotBlockEntity.teaResult)
                     {
@@ -103,9 +104,37 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                             break;
                     }
                     teapotBlockEntity.removeWater();
+                    teapotBlockEntity.teaResult = 0;
                 }
-
-                teapotBlockEntity.addTealeaf(player.getStackInHand(hand).getItem().toString());
+                boolean hasLeafItem = false;
+                switch (player.getStackInHand(hand).getItem().toString())
+                {
+                    case "acacia_tea_leaf": teapotBlockEntity.addTealeaf(1);
+                        hasLeafItem = true;
+                        break;
+                    case "birch_tea_leaf": teapotBlockEntity.addTealeaf(2);
+                        hasLeafItem = true;
+                        break;
+                    case "dark_oak_tea_leaf": teapotBlockEntity.addTealeaf(3);
+                        hasLeafItem = true;
+                        break;
+                    case "jungle_tea_leaf": teapotBlockEntity.addTealeaf(4);
+                        hasLeafItem = true;
+                        break;
+                    case "mangrove_tea_leaf": teapotBlockEntity.addTealeaf(5);
+                        hasLeafItem = true;
+                        break;
+                    case "oak_tea_leaf": teapotBlockEntity.addTealeaf(6);
+                        hasLeafItem = true;
+                        break;
+                    case "spruce_tea_leaf": teapotBlockEntity.addTealeaf(7);
+                        hasLeafItem = true;
+                        break;
+                }
+                if (!player.getAbilities().creativeMode && hasLeafItem)
+                {
+                    player.getStackInHand(hand).decrement(1);
+                }
             }
         }
         return ActionResult.SUCCESS;
@@ -113,12 +142,14 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state)
+    {
         return new TeapotBlockEntity(pos, state);
     }
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
+    {
         return checkType(type, ModBlockEntities.TEAPOT, TeapotBlockEntity::tick);
     }
 

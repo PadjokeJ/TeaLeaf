@@ -1,8 +1,12 @@
 package io.itch.padjokej.tealeaf.item;
 
+import io.itch.padjokej.tealeaf.effects.FragranceEffect;
+import io.itch.padjokej.tealeaf.registry.EffectRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
@@ -11,6 +15,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class SniffableItem extends ConsumableItem
@@ -34,6 +39,10 @@ public class SniffableItem extends ConsumableItem
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()) {
             affectConsumer(stack, world, user);
+            user.addStatusEffect(new StatusEffectInstance(
+                    EffectRegistry.FRAGRANCE.get(),
+                    200, 4));
+
         }
 
         ItemStack container = stack.getRecipeRemainder();

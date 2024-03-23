@@ -10,16 +10,9 @@ import net.minecraft.world.World;
 
 public class DrinkableItem extends ConsumableItem {
 
-    public DrinkableItem(Settings settings) {
+    public DrinkableItem(Settings settings)
+    {
         super(settings);
-    }
-
-    public DrinkableItem(Settings settings, boolean hasFoodEffectTooltip) {
-        super(settings, hasFoodEffectTooltip);
-    }
-
-    public DrinkableItem(Settings settings, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(settings, hasFoodEffectTooltip, hasCustomTooltip);
     }
 
     @Override

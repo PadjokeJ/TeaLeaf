@@ -1,8 +1,10 @@
 package io.itch.padjokej.tealeaf;
 
 import io.itch.padjokej.tealeaf.block.ModBlocks;
+import io.itch.padjokej.tealeaf.effects.FragranceEffect;
 import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.item.ModItems;
+import io.itch.padjokej.tealeaf.registry.EffectRegistry;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,7 @@ public class TeaLeaf implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+		EffectRegistry.registerAll();
 
 		LOGGER.info("TeaLeaf initiated B)");
 	}
