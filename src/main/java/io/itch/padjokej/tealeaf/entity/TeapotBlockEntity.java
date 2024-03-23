@@ -1,29 +1,19 @@
 package io.itch.padjokej.tealeaf.entity;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
-import io.itch.padjokej.tealeaf.registry.PacketsRegistry;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
-
-import java.util.Objects;
 
 public class TeapotBlockEntity extends BlockEntity {
 
@@ -129,19 +119,21 @@ public class TeapotBlockEntity extends BlockEntity {
 
             if (entity.teaType > 0)
             {
-                world.addImportantParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ(), 0.0, 0.005, 0.0);
                 entity.boilTimer++;
                 markDirty(world, pos, state);
                 if (entity.boilTimer >= entity.maxBoilTimer)
                 {
                     entity.makeTea(entity.teaType);
+                    return;
                 }
-                for (ServerPlayerEntity player : PlayerLookup.tracking(entity))
+                if(world instanceof ServerWorld serverWorld)
                 {
-                    ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET,
-                            sendParticlePacket((double)pos.getX(), (double)pos.getY() + 0.4, (double)pos.getZ()));
-                }
+                    var oP = state.get(Properties.FACING).getUnitVector();
+                    oP.scale(0.5f);
+                    var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
 
+                    serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .2, 0, 0);
+                }
             } else
             {
                 entity.resetProgress();
@@ -159,5 +151,8 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         this.boilTimer = 0;
     }
+    /*ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET,
+                                sendParticlePacket((double) pos.getX(), (double) pos.getY() + 0.4, (double) pos.getZ()));
+                        BoilParticlePacket.send(player, (double) pos.getX(), (double) pos.getY() + 0.4, (double) pos.getZ());*/
 
 }

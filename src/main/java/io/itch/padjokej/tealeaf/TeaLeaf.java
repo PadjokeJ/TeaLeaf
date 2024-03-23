@@ -6,6 +6,7 @@ import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.item.ModItems;
 import io.itch.padjokej.tealeaf.registry.EffectRegistry;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,5 +25,8 @@ public class TeaLeaf implements ModInitializer {
 		EffectRegistry.registerAll();
 
 		LOGGER.info("TeaLeaf initiated B)");
+	}
+	public static Identifier id(String value) {
+		return new Identifier(MOD_ID, value);
 	}
 }
