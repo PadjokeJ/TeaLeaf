@@ -8,6 +8,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -128,8 +130,10 @@ public class TeapotBlockEntity extends BlockEntity {
                 }
                 if(world instanceof ServerWorld serverWorld)
                 {
+                    world.playSound(null, pos, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+
                     var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
-                    oP.scale(0.5f);
+                    oP.scale(-0.5f);
                     var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
 
                     serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .2, 0, 0);

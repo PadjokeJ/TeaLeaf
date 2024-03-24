@@ -9,9 +9,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.sound.SoundEngine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.*;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -76,12 +80,16 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                 {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(Items.BUCKET)));
                     teapotBlockEntity.addWater();
+
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return ActionResult.SUCCESS;
                 }
                 if(player.getStackInHand(hand).getItem() == Items.BUCKET && teapotBlockEntity.hasWater == 1)
                 {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(Items.WATER_BUCKET)));
                     teapotBlockEntity.removeWater();
+
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return ActionResult.SUCCESS;
                 }
                 if(player.getStackInHand(hand).getItem() == ModItems.TEA_CUP && teapotBlockEntity.teaResult > 0)
@@ -103,8 +111,12 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                         case 7: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
                             break;
                     }
+
+                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+
                     teapotBlockEntity.removeWater();
                     teapotBlockEntity.teaResult = 0;
+                    teapotBlockEntity.teaType = 0;
                 }
                 boolean hasLeafItem = false;
                 switch (player.getStackInHand(hand).getItem().toString())
