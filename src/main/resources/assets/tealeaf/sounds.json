@@ -1,0 +1,9 @@
+{
+  "sniff":
+  {
+    "subtitle": "tealeaf.subtitles.player.sniff",
+    "sounds": [
+      "tealeaf:sniff"
+    ]
+  }
+}

@@ -75,7 +75,6 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
         {
             if(world.getBlockEntity(pos) instanceof TeapotBlockEntity teapotBlockEntity)
             {
-                player.sendMessage(Text.of(String.valueOf(teapotBlockEntity.hasWater)));
                 if(player.getStackInHand(hand).getItem() == Items.WATER_BUCKET && teapotBlockEntity.hasWater == 0)
                 {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(Items.BUCKET)));

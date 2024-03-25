@@ -2,6 +2,7 @@ package io.itch.padjokej.tealeaf.item;
 
 import io.itch.padjokej.tealeaf.effects.FragranceEffect;
 import io.itch.padjokej.tealeaf.registry.EffectRegistry;
+import io.itch.padjokej.tealeaf.registry.SoundRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
@@ -11,6 +12,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -32,7 +35,7 @@ public class SniffableItem extends ConsumableItem
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.EAT;
+        return UseAction.DRINK;
     }
 
     @Override
@@ -79,6 +82,15 @@ public class SniffableItem extends ConsumableItem
         return ItemUsage.consumeHeldItem(world, user, hand);
     }
 
+    @Override
+    public SoundEvent getDrinkSound() {
+        return SoundRegistry.SNIFFING.get();
+    }
+
+    @Override
+    public SoundEvent getEatSound() {
+        return SoundRegistry.SNIFFING.get();
+    }
 
 
 }

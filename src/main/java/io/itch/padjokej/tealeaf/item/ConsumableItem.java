@@ -2,6 +2,7 @@ package io.itch.padjokej.tealeaf.item;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import io.itch.padjokej.tealeaf.registry.EffectRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;
@@ -61,6 +62,9 @@ public class ConsumableItem extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()) {
             affectConsumer(stack, world, user);
+            user.addStatusEffect(new StatusEffectInstance(
+                    EffectRegistry.FRAGRANCE.get(),
+                    200, 4));
         }
 
         ItemStack container = stack.getRecipeRemainder();
