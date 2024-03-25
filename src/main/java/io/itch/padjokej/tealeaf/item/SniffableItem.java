@@ -1,24 +1,17 @@
 package io.itch.padjokej.tealeaf.item;
 
-import io.itch.padjokej.tealeaf.effects.FragranceEffect;
 import io.itch.padjokej.tealeaf.registry.EffectRegistry;
 import io.itch.padjokej.tealeaf.registry.SoundRegistry;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class SniffableItem extends ConsumableItem

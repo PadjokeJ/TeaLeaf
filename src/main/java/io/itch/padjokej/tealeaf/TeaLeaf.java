@@ -1,7 +1,6 @@
 package io.itch.padjokej.tealeaf;
 
 import io.itch.padjokej.tealeaf.block.ModBlocks;
-import io.itch.padjokej.tealeaf.effects.FragranceEffect;
 import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.item.ModItems;
 import io.itch.padjokej.tealeaf.registry.EffectRegistry;

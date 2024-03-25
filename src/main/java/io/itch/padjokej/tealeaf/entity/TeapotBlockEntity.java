@@ -13,8 +13,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 
 public class TeapotBlockEntity extends BlockEntity {
@@ -155,8 +153,5 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         this.boilTimer = 0;
     }
-    /*ServerPlayNetworking.send(player, PacketsRegistry.BOIL_PARTICLE_PACKET,
-                                sendParticlePacket((double) pos.getX(), (double) pos.getY() + 0.4, (double) pos.getZ()));
-                        BoilParticlePacket.send(player, (double) pos.getX(), (double) pos.getY() + 0.4, (double) pos.getZ());*/
 
 }

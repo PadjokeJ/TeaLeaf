@@ -1,27 +1,21 @@
 package io.itch.padjokej.tealeaf.block.teapot;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
 import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
 import io.itch.padjokej.tealeaf.entity.TeapotBlockEntity;
 import io.itch.padjokej.tealeaf.item.ModItems;
-import io.itch.padjokej.tealeaf.registry.TagsRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.sound.SoundEngine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
-import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;

@@ -1,8 +1,6 @@
 package io.itch.padjokej.tealeaf.registry;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
-import net.fabricmc.fabric.api.client.sound.v1.FabricSoundInstance;
-import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
