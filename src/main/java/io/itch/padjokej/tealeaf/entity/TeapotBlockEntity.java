@@ -143,6 +143,14 @@ public class TeapotBlockEntity extends BlockEntity {
                 if (entity.boilTimer >= entity.maxBoilTimer)
                 {
                     entity.makeTea(entity.teaType);
+                    if (world instanceof ServerWorld serverWorld) {
+                        var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
+                        oP.scale(-0.5f);
+                        var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
+
+                        serverWorld.spawnParticles(ParticleTypes.CLOUD, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .4, 0, 0.1f);
+                    }
+
                     return;
                 }
                 if(world instanceof ServerWorld serverWorld)
@@ -153,7 +161,7 @@ public class TeapotBlockEntity extends BlockEntity {
                     oP.scale(-0.5f);
                     var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
 
-                    serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .2, 0, 0);
+                    serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.4, particlePos.getZ(), 1, 0, .2, 0, 0);
                 }
             } else
             {
