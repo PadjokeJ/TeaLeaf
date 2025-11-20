@@ -1,7 +1,12 @@
 package io.itch.padjokej.tealeaf.entity;
 
+import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.block.AbstractFurnaceBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -106,6 +111,20 @@ public class TeapotBlockEntity extends BlockEntity {
         buf.writeDouble(z);
         return buf;
     }
+
+    public static boolean isHotBlock(World world, BlockPos pos) {
+        BlockState blockStateBelow = world.getBlockState(pos.down());
+
+        Block blockBelow = blockStateBelow.getBlock();
+
+        if (blockBelow.equals(Blocks.MAGMA_BLOCK))
+            return true;
+        if (blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT))
+            return true;
+
+        return false;
+    }
+
     public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
     {
         if(!world.isClient)
@@ -117,7 +136,7 @@ public class TeapotBlockEntity extends BlockEntity {
                 return;
             }
 
-            if (entity.teaType > 0)
+            if (entity.teaType > 0 && isHotBlock(world, pos))
             {
                 entity.boilTimer++;
                 markDirty(world, pos, state);

@@ -62,7 +62,7 @@ public class ConsumableItem extends Item {
             affectConsumer(stack, world, user);
             user.addStatusEffect(new StatusEffectInstance(
                     EffectRegistry.FRAGRANCE.get(),
-                    200, 4));
+                    LONG_DURATION, 2));
         }
 
         ItemStack container = stack.getRecipeRemainder();
