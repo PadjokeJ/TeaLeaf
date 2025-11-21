@@ -19,6 +19,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,17 +29,44 @@ import org.jetbrains.annotations.Nullable;
 public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
 {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+
+    public static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(4.0, 1.0, 4.0, 12.0, 6.0, 12.0);
+
+    public static final VoxelShape WEST_SHAPE  =     Block.createCuboidShape(3.0, 1.0, 3.0, 12.0, 6.0, 12.0);
+    public static final VoxelShape EAST_SHAPE  =     Block.createCuboidShape(4.0, 1.0, 4.0, 13.0, 6.0, 13.0);
+    public static final VoxelShape NORTH_SHAPE =     Block.createCuboidShape(4.0, 1.0, 3.0, 13.0, 6.0, 12.0);
+    public static final VoxelShape SOUTH_SHAPE =     Block.createCuboidShape(3.0, 1.0, 4.0, 12.0, 6.0, 13.0);
+
     public TeaPotBlock(Settings settings)
     {
         super(settings);
     }
 
-
-
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+    }
+
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return COLLISION_SHAPE;
+    }
+
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        switch ((Direction)state.get(FACING)) {
+            case SOUTH -> {
+                return SOUTH_SHAPE;
+            }
+            case EAST -> {
+                return EAST_SHAPE;
+            }
+            case WEST -> {
+                return WEST_SHAPE;
+            }
+            default -> {
+                return NORTH_SHAPE;
+            }
+        }
     }
 
     @Override

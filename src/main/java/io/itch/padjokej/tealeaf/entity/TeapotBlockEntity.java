@@ -148,7 +148,7 @@ public class TeapotBlockEntity extends BlockEntity {
                         oP.scale(-0.5f);
                         var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
 
-                        serverWorld.spawnParticles(ParticleTypes.CLOUD, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .4, 0, 0.1f);
+                        serverWorld.spawnParticles(ParticleTypes.CLOUD, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .4, 0, 0f);
                     }
 
                     return;
