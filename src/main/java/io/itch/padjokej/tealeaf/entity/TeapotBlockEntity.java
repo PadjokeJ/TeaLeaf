@@ -2,10 +2,7 @@ package io.itch.padjokej.tealeaf.entity;
 
 import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.block.AbstractFurnaceBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -118,6 +115,8 @@ public class TeapotBlockEntity extends BlockEntity {
         Block blockBelow = blockStateBelow.getBlock();
 
         if (blockBelow.equals(Blocks.MAGMA_BLOCK))
+            return true;
+        if (blockBelow instanceof CampfireBlock && CampfireBlock.isLitCampfire(blockStateBelow))
             return true;
         if (blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT))
             return true;
