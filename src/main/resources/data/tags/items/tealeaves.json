@@ -1,12 +1,12 @@
 {
   "replace": false,
   "values": [
-    "tealeaf:oak_tealeaf",
-    "tealeaf:jungle_tealeaf",
-    "tealeaf:acacia_tealeaf",
-    "tealeaf:spruce_tealeaf",
-    "tealeaf:mangrove_tealeaf",
-    "tealeaf:birch_tealeaf",
-    "tealeaf:dark_ak_tealeaf"
+    "tealeaf:oak_tea_leaf",
+    "tealeaf:jungle_tea_leaf",
+    "tealeaf:acacia_tea_leaf",
+    "tealeaf:spruce_tea_leaf",
+    "tealeaf:mangrove_tea_leaf",
+    "tealeaf:birch_tea_leaf",
+    "tealeaf:dark_ak_tea_leaf"
   ]
 }
