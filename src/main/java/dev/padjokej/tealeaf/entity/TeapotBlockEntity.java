@@ -1,10 +1,11 @@
 package dev.padjokej.tealeaf.entity;
 
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.block.*;
+import dev.padjokej.tealeaf.registry.TagsRegistry;
+import net.minecraft.block.AbstractFurnaceBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.server.world.ServerWorld;
@@ -98,24 +99,17 @@ public class TeapotBlockEntity extends BlockEntity {
     {
         teaType = type;
     }
-    public static PacketByteBuf sendParticlePacket(double x, double y, double z)
-    {
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeDouble(x);
-        buf.writeDouble(y);
-        buf.writeDouble(z);
-        return buf;
-    }
 
     public static boolean isHotBlock(World world, BlockPos pos) {
         BlockState blockStateBelow = world.getBlockState(pos.down());
 
         Block blockBelow = blockStateBelow.getBlock();
 
-        if (blockBelow.equals(Blocks.MAGMA_BLOCK))
+        if (blockStateBelow.isIn(TagsRegistry.HEAT_SOURCES)) {
+            if (blockStateBelow.contains(Properties.LIT))
+                return blockStateBelow.get(Properties.LIT);
             return true;
-        if (blockBelow instanceof CampfireBlock && CampfireBlock.isLitCampfire(blockStateBelow))
-            return true;
+        }
         if (blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT))
             return true;
 

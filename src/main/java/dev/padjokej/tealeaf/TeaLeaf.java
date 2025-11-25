@@ -6,6 +6,7 @@ import dev.padjokej.tealeaf.item.ModItemGroup;
 import dev.padjokej.tealeaf.item.ModItems;
 import dev.padjokej.tealeaf.registry.EffectRegistry;
 import dev.padjokej.tealeaf.registry.SoundRegistry;
+import dev.padjokej.tealeaf.registry.TagsRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ public class TeaLeaf implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		EffectRegistry.registerAll();
 		SoundRegistry.registerAll();
+        TagsRegistry.registerModTags();
 
 		LOGGER.info("TeaLeaf initiated B)");
 	}
