@@ -1,12 +1,18 @@
 package dev.padjokej.tealeaf.item;
 
 import dev.padjokej.tealeaf.TeaLeaf;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
-    public static final ItemGroup TEALEAF = FabricItemGroupBuilder.build(
-            new Identifier(TeaLeaf.MOD_ID, "tealeaf"), () -> new ItemStack(ModItems.SPRUCE_TEALEAF));
+    public static ItemGroup TEALEAF;
+
+    public static void registerItemGroup() {
+        TEALEAF = FabricItemGroup.builder(new Identifier(TeaLeaf.MOD_ID, "tealeaf"))
+                .displayName(Text.translatable("itemGroup.tealeaf.tealeaf"))
+                .icon(() -> new ItemStack(ModItems.OAK_TEALEAF)).build();
+    }
 }
