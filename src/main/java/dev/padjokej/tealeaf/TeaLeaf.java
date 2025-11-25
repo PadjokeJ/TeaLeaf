@@ -2,6 +2,7 @@ package dev.padjokej.tealeaf;
 
 import dev.padjokej.tealeaf.block.ModBlocks;
 import dev.padjokej.tealeaf.entity.ModBlockEntities;
+import dev.padjokej.tealeaf.item.ModItemGroup;
 import dev.padjokej.tealeaf.item.ModItems;
 import dev.padjokej.tealeaf.registry.EffectRegistry;
 import dev.padjokej.tealeaf.registry.SoundRegistry;
@@ -19,6 +20,7 @@ public class TeaLeaf implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+        ModItemGroup.registerItemGroup();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
