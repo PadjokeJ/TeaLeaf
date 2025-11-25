@@ -1,5 +1,5 @@
-package io.itch.padjokej.tealeaf.registry;
-import io.itch.padjokej.tealeaf.TeaLeaf;
+package dev.padjokej.tealeaf.registry;
+import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;

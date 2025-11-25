@@ -1,9 +1,7 @@
-package io.itch.padjokej.tealeaf.entity;
+package dev.padjokej.tealeaf.entity;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;

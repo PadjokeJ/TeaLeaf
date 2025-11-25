@@ -1,8 +1,8 @@
-package io.itch.padjokej.tealeaf.block.teapot;
+package dev.padjokej.tealeaf.block.teapot;
 
-import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
-import io.itch.padjokej.tealeaf.entity.TeapotBlockEntity;
-import io.itch.padjokej.tealeaf.item.ModItems;
+import dev.padjokej.tealeaf.entity.ModBlockEntities;
+import dev.padjokej.tealeaf.entity.TeapotBlockEntity;
+import dev.padjokej.tealeaf.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

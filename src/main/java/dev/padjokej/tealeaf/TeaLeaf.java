@@ -1,10 +1,10 @@
-package io.itch.padjokej.tealeaf;
+package dev.padjokej.tealeaf;
 
-import io.itch.padjokej.tealeaf.block.ModBlocks;
-import io.itch.padjokej.tealeaf.entity.ModBlockEntities;
-import io.itch.padjokej.tealeaf.item.ModItems;
-import io.itch.padjokej.tealeaf.registry.EffectRegistry;
-import io.itch.padjokej.tealeaf.registry.SoundRegistry;
+import dev.padjokej.tealeaf.block.ModBlocks;
+import dev.padjokej.tealeaf.entity.ModBlockEntities;
+import dev.padjokej.tealeaf.item.ModItems;
+import dev.padjokej.tealeaf.registry.EffectRegistry;
+import dev.padjokej.tealeaf.registry.SoundRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;

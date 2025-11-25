@@ -1,7 +1,7 @@
-package io.itch.padjokej.tealeaf.item;
+package dev.padjokej.tealeaf.item;
 
-import io.itch.padjokej.tealeaf.registry.EffectRegistry;
-import io.itch.padjokej.tealeaf.registry.SoundRegistry;
+import dev.padjokej.tealeaf.registry.EffectRegistry;
+import dev.padjokej.tealeaf.registry.SoundRegistry;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;

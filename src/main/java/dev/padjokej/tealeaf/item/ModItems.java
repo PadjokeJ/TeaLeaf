@@ -1,6 +1,6 @@
-package io.itch.padjokej.tealeaf.item;
+package dev.padjokej.tealeaf.item;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
+import dev.padjokej.tealeaf.TeaLeaf;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;

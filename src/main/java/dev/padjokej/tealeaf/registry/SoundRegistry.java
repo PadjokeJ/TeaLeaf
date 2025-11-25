@@ -1,6 +1,6 @@
-package io.itch.padjokej.tealeaf.registry;
+package dev.padjokej.tealeaf.registry;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
+import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

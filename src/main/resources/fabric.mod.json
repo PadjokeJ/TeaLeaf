@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.itch.padjokej.tealeaf.TeaLeaf"
+      "dev.padjokej.tealeaf.TeaLeaf"
     ]
   },
   "mixins": [

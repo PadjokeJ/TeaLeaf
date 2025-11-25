@@ -1,7 +1,7 @@
-package io.itch.padjokej.tealeaf.registry;
+package dev.padjokej.tealeaf.registry;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
-import io.itch.padjokej.tealeaf.effects.FragranceEffect;
+import dev.padjokej.tealeaf.TeaLeaf;
+import dev.padjokej.tealeaf.effects.FragranceEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;

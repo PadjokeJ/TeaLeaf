@@ -1,8 +1,8 @@
-package io.itch.padjokej.tealeaf.item;
+package dev.padjokej.tealeaf.item;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
-import io.itch.padjokej.tealeaf.registry.EffectRegistry;
+import dev.padjokej.tealeaf.registry.EffectRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;

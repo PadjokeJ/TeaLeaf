@@ -1,6 +1,6 @@
-package io.itch.padjokej.tealeaf.mixin;
+package dev.padjokej.tealeaf.mixin;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
+import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

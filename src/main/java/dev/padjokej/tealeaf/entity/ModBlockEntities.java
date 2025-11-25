@@ -1,7 +1,7 @@
-package io.itch.padjokej.tealeaf.entity;
+package dev.padjokej.tealeaf.entity;
 
-import io.itch.padjokej.tealeaf.TeaLeaf;
-import io.itch.padjokej.tealeaf.block.ModBlocks;
+import dev.padjokej.tealeaf.TeaLeaf;
+import dev.padjokej.tealeaf.block.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;

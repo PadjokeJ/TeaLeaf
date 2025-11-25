@@ -1,4 +1,4 @@
-package io.itch.padjokej.tealeaf.item;
+package dev.padjokej.tealeaf.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
