@@ -5,8 +5,9 @@ import dev.padjokej.tealeaf.effects.FragranceEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public enum EffectRegistry
 {
@@ -22,7 +23,7 @@ public enum EffectRegistry
     }
     public static void registerAll() {
         for (EffectRegistry value : values()) {
-            Registry.register(Registry.STATUS_EFFECT,
+            Registry.register(Registries.STATUS_EFFECT,
                     new Identifier(TeaLeaf.MOD_ID, value.pathName), value.effect);
         }
     }

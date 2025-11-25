@@ -1,9 +1,11 @@
 package dev.padjokej.tealeaf.registry;
 
 import dev.padjokej.tealeaf.TeaLeaf;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public enum SoundRegistry
 {
@@ -14,12 +16,12 @@ public enum SoundRegistry
 
     SoundRegistry(String pathName) {
         this.pathName = pathName;
-        this.soundEvent = new SoundEvent(new Identifier(TeaLeaf.MOD_ID, this.pathName));
+        this.soundEvent = SoundEvent.of(new Identifier(TeaLeaf.MOD_ID, this.pathName));
     }
 
     public static void registerAll() {
         for (SoundRegistry value : values()) {
-            Registry.register(Registry.SOUND_EVENT, new Identifier(TeaLeaf.MOD_ID, value.pathName), value.soundEvent);
+            Registry.register(Registries.SOUND_EVENT, new Identifier(TeaLeaf.MOD_ID, value.pathName), value.soundEvent);
         }
     }
 
