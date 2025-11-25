@@ -127,7 +127,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
                             break;
                         case 4: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
                             break;
-                        case 5: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_OAK_TEA)));
+                        case 5: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_TEA)));
                             break;
                         case 6: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
                             break;
