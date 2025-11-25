@@ -142,8 +142,8 @@ public class TeapotBlockEntity extends BlockEntity {
                     entity.makeTea(entity.teaType);
                     if (world instanceof ServerWorld serverWorld) {
                         var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
-                        oP.scale(-0.5f);
-                        var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
+                        oP.mul(-0.5f);
+                        var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.x, oP.y, oP.z));
 
                         serverWorld.spawnParticles(ParticleTypes.CLOUD, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .4, 0, 0f);
                     }
@@ -155,8 +155,8 @@ public class TeapotBlockEntity extends BlockEntity {
                     world.playSound(null, pos, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
                     var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
-                    oP.scale(-0.5f);
-                    var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.getX(), oP.getY(), oP.getZ()));
+                    oP.mul(-0.5f);
+                    var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.x, oP.y, oP.z));
 
                     serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.4, particlePos.getZ(), 1, 0, .2, 0, 0);
                 }
