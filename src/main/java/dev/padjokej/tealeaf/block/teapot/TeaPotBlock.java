@@ -1,5 +1,6 @@
 package dev.padjokej.tealeaf.block.teapot;
 
+import com.mojang.serialization.MapCodec;
 import dev.padjokej.tealeaf.entity.ModBlockEntities;
 import dev.padjokej.tealeaf.entity.TeapotBlockEntity;
 import dev.padjokej.tealeaf.item.ModItems;
@@ -28,8 +29,8 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 
-public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
-{
+public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider  {
+    public static final MapCodec<TeaPotBlock> CODEC = createCodec(TeaPotBlock::new);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(4.0, 1.0, 4.0, 12.0, 6.0, 12.0);
@@ -43,6 +44,11 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)));
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return CODEC;
     }
 
     @Nullable
@@ -95,6 +101,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     {
         return BlockRenderType.MODEL;
     }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos,
                               PlayerEntity player, Hand hand, BlockHitResult hit)
