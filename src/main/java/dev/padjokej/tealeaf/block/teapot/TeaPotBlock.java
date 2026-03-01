@@ -8,6 +8,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
@@ -23,12 +24,13 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 
 public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
 {
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(4.0, 1.0, 4.0, 12.0, 6.0, 12.0);
 
@@ -40,12 +42,14 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     public TeaPotBlock(Settings settings)
     {
         super(settings);
+        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)));
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().getOpposite());
+
+        return ((BlockState)this.getDefaultState()).with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -185,7 +189,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
-        return checkType(type, ModBlockEntities.TEAPOT, TeapotBlockEntity::tick);
+        return validateTicker(type, ModBlockEntities.TEAPOT, TeapotBlockEntity::tick);
     }
 
 }

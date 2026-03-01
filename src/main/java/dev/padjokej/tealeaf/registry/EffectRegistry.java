@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 public enum EffectRegistry
 {
     FRAGRANCE("fragrance", new FragranceEffect(.1)
-            .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "dab24cbc-7bff-4ae5-b5f6-2733328e385e", 0.0, EntityAttributeModifier.Operation.ADDITION));
+            .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "dab24cbc-7bff-4ae5-b5f6-2733328e385e", 0.15, EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
     private final String pathName;
     private final StatusEffect effect;

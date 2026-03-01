@@ -33,16 +33,15 @@ public class TeapotBlockEntity extends BlockEntity {
             @Override
             public int get(int index)
             {
-                switch (index)
-                {
-                    case 0: return TeapotBlockEntity.this.level;
-                    case 1: return TeapotBlockEntity.this.teaType;
-                    case 2: return TeapotBlockEntity.this.boilTimer;
-                    case 3: return TeapotBlockEntity.this.maxBoilTimer;
-                    case 4: return TeapotBlockEntity.this.teaResult;
-                    case 5: return TeapotBlockEntity.this.hasWater;
-                    default: return 0;
-                }
+                return switch (index) {
+                    case 0 -> TeapotBlockEntity.this.level;
+                    case 1 -> TeapotBlockEntity.this.teaType;
+                    case 2 -> TeapotBlockEntity.this.boilTimer;
+                    case 3 -> TeapotBlockEntity.this.maxBoilTimer;
+                    case 4 -> TeapotBlockEntity.this.teaResult;
+                    case 5 -> TeapotBlockEntity.this.hasWater;
+                    default -> 0;
+                };
             }
 
             public void set(int index, int value)
@@ -110,10 +109,7 @@ public class TeapotBlockEntity extends BlockEntity {
                 return blockStateBelow.get(Properties.LIT);
             return true;
         }
-        if (blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT))
-            return true;
-
-        return false;
+        return blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
@@ -127,32 +123,25 @@ public class TeapotBlockEntity extends BlockEntity {
                 return;
             }
 
-            if (entity.teaType > 0 && isHotBlock(world, pos))
-            {
+            if (entity.teaType > 0 && isHotBlock(world, pos)) {
                 entity.boilTimer++;
                 markDirty(world, pos, state);
-                if (entity.boilTimer >= entity.maxBoilTimer)
-                {
+                var part = ParticleTypes.SMOKE;
+                if (entity.boilTimer >= entity.maxBoilTimer) {
                     entity.makeTea(entity.teaType);
-                    if (world instanceof ServerWorld serverWorld) {
-                        var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
-                        oP.mul(-0.5f);
-                        var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.x, oP.y, oP.z));
-
-                        serverWorld.spawnParticles(ParticleTypes.CLOUD, particlePos.getX(), particlePos.getY() + 0.5, particlePos.getZ(), 1, 0, .4, 0, 0f);
-                    }
-
-                    return;
-                }
-                if(world instanceof ServerWorld serverWorld)
-                {
+                    part = ParticleTypes.CLOUD;
+                } else if (world instanceof ServerWorld){
                     world.playSound(null, pos, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                }
 
-                    var oP = state.get(Properties.HORIZONTAL_FACING).getUnitVector();
-                    oP.mul(-0.5f);
-                    var particlePos = Vec3d.ofCenter(pos).add(new Vec3d(oP.x, oP.y, oP.z));
+                if (world instanceof ServerWorld serverWorld) {
+                    var oP = state.get(Properties.HORIZONTAL_FACING);
 
-                    serverWorld.spawnParticles(ParticleTypes.SMOKE, particlePos.getX(), particlePos.getY() + 0.4, particlePos.getZ(), 1, 0, .2, 0, 0);
+                    var particlePos = Vec3d.ofCenter(pos).add(
+                            new Vec3d(oP.getOffsetX(), oP.getOffsetY(), oP.getOffsetZ())
+                                    .multiply(-0.5));
+
+                    serverWorld.spawnParticles(part, particlePos.getX(), particlePos.getY() + 0.4, particlePos.getZ(), 1, 0, .2, 0, 0);
                 }
             } else
             {
