@@ -5,8 +5,8 @@ import dev.padjokej.tealeaf.block.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 
 public class ModBlockEntities {
     public static BlockEntityType<TeapotBlockEntity> TEAPOT;

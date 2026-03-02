@@ -2,12 +2,8 @@ package dev.padjokej.tealeaf.block;
 
 import dev.padjokej.tealeaf.TeaLeaf;
 import dev.padjokej.tealeaf.block.teapot.TeaPotBlock;
-import net.fabricmc.fabric.api.item.v1.FabricItem;
-import net.fabricmc.fabric.api.item.v1.FabricItem.Settings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.item.BlockItem;

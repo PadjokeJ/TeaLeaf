@@ -2,13 +2,9 @@ package dev.padjokej.tealeaf.registry;
 
 import dev.padjokej.tealeaf.TeaLeaf;
 import dev.padjokej.tealeaf.effects.FragranceEffect;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Supplier;

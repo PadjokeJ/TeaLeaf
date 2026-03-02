@@ -1,6 +1,5 @@
 package dev.padjokej.tealeaf.effects;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 

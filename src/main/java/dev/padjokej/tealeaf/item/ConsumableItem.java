@@ -1,11 +1,8 @@
 package dev.padjokej.tealeaf.item;
 
-import dev.padjokej.tealeaf.registry.EffectRegistry;
 import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.component.DataComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
