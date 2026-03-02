@@ -2,6 +2,8 @@ package dev.padjokej.tealeaf.item;
 
 import dev.padjokej.tealeaf.registry.EffectRegistry;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.component.DataComponentType;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,14 +50,11 @@ public class ConsumableItem extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()) {
             affectConsumer(stack, world, user);
-            user.addStatusEffect(new StatusEffectInstance(
-                    EffectRegistry.FRAGRANCE.get(),
-                    LONG_DURATION, 2));
         }
 
         ItemStack container = stack.getRecipeRemainder();
 
-        if (stack.isFood()) {
+        if (stack.get(DataComponentTypes.FOOD) != null) {
             super.finishUsing(stack, world, user);
         } else if (user instanceof PlayerEntity player) {
             if (player instanceof ServerPlayerEntity serverPlayer) {

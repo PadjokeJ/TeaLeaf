@@ -2,6 +2,7 @@ package dev.padjokej.tealeaf.item;
 
 import dev.padjokej.tealeaf.registry.EffectRegistry;
 import dev.padjokej.tealeaf.registry.SoundRegistry;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,15 +36,13 @@ public class SniffableItem extends ConsumableItem
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()) {
             affectConsumer(stack, world, user);
-            user.addStatusEffect(new StatusEffectInstance(
-                    EffectRegistry.FRAGRANCE.get(),
-                    200, 4));
+            user.addStatusEffect(new StatusEffectInstance(EffectRegistry.FRAGRANCE));
 
         }
 
         ItemStack container = stack.getRecipeRemainder();
 
-        if (stack.isFood()) {
+        if (stack.get(DataComponentTypes.FOOD) != null) {
             super.finishUsing(stack, world, user);
         } else if (user instanceof PlayerEntity player) {
             player.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -62,8 +61,8 @@ public class SniffableItem extends ConsumableItem
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack heldStack = user.getStackInHand(hand);
-        if (heldStack.isFood()) {
-            if (user.canConsume(heldStack.getItem().getFoodComponent().isAlwaysEdible())) {
+        if (heldStack.get(DataComponentTypes.FOOD) != null) {
+            if (user.canConsume(heldStack.get(DataComponentTypes.FOOD).canAlwaysEat())) {
                 user.setCurrentHand(hand);
 
                 return TypedActionResult.consume(heldStack);

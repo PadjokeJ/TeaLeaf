@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -66,9 +67,8 @@ public class TeapotBlockEntity extends BlockEntity {
 
 
     @Override
-    protected void writeNbt (NbtCompound nbt)
-    {
-        super.writeNbt(nbt);
+    protected void writeNbt (NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
         nbt.putInt("teapot.level", level);
         nbt.putInt("teapot.teaType", teaType);
         nbt.putInt("teapot.boilTimer", boilTimer);
@@ -76,9 +76,8 @@ public class TeapotBlockEntity extends BlockEntity {
         nbt.putInt("teapot.hasWater", hasWater);
     }
     @Override
-    public void readNbt (NbtCompound nbt)
-    {
-        super.readNbt(nbt);
+    public void readNbt (NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
         level = nbt.getInt("teapot.level");
         teaType = nbt.getInt("teapot.teaType");
         boilTimer = nbt.getInt("teapot.boilTimer");
@@ -86,6 +85,7 @@ public class TeapotBlockEntity extends BlockEntity {
         hasWater = nbt.getInt("teapot.hasWater");
 
     }
+
     public void addWater ()
     {
         hasWater = 1;

@@ -2,7 +2,8 @@ package dev.padjokej.tealeaf.block;
 
 import dev.padjokej.tealeaf.TeaLeaf;
 import dev.padjokej.tealeaf.block.teapot.TeaPotBlock;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.item.v1.FabricItem;
+import net.fabricmc.fabric.api.item.v1.FabricItem.Settings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -27,7 +28,7 @@ public class ModBlocks {
     }
     private static Item registerBlockItems(String name, Block block) {
         Item item = Registry.register(Registries.ITEM, new Identifier(TeaLeaf.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
+                new BlockItem(block, new Item.Settings()));
         return item;
     }
 

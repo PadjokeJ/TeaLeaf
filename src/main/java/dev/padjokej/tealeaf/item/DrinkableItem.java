@@ -1,5 +1,6 @@
 package dev.padjokej.tealeaf.item;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
@@ -28,8 +29,8 @@ public class DrinkableItem extends ConsumableItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack heldStack = user.getStackInHand(hand);
-        if (heldStack.isFood()) {
-            if (user.canConsume(heldStack.getItem().getFoodComponent().isAlwaysEdible())) {
+        if (heldStack.get(DataComponentTypes.FOOD) != null) {
+            if (user.canConsume(heldStack.get(DataComponentTypes.FOOD).canAlwaysEat())) {
                 user.setCurrentHand(hand);
 
                 return TypedActionResult.consume(heldStack);

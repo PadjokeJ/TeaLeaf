@@ -103,9 +103,9 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                              PlayerEntity player, Hand hand, BlockHitResult hit)
-    {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos,
+                              PlayerEntity player, BlockHitResult hit) {
+        Hand hand = player.getActiveHand();
         if (!world.isClient)
         {
             if(world.getBlockEntity(pos) instanceof TeapotBlockEntity teapotBlockEntity)
