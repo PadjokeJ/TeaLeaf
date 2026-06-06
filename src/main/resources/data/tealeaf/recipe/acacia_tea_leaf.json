@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "minecraft:acacia_leaves"
-    }
+    "minecraft:acacia_leaves"
   ],
   "result": {
     "id": "tealeaf:acacia_tea_leaf",

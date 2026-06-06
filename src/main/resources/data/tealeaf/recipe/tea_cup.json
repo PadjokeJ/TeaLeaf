@@ -5,9 +5,7 @@
     " # "
   ],
   "key": {
-    "#": {
-      "item": "minecraft:clay_ball"
-    }
+    "#": "minecraft:clay_ball"
   },
   "result": {
     "id": "tealeaf:tea_cup",

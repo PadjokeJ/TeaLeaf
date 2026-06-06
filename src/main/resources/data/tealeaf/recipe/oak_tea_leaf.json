@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "minecraft:oak_leaves"
-    }
+    "minecraft:oak_leaves"
   ],
   "result": {
     "id": "tealeaf:oak_tea_leaf",

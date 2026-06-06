@@ -10,11 +10,11 @@ public class FragranceEffect extends StatusEffect {
     public FragranceEffect() {
         super(StatusEffectCategory.BENEFICIAL, 0xD3AF37);
 
-        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, TeaLeaf.id("speed"),
+        this.addAttributeModifier(EntityAttributes.MOVEMENT_SPEED, TeaLeaf.id("speed"),
                         0.15, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, TeaLeaf.id("kb-res"),
+                .addAttributeModifier(EntityAttributes.KNOCKBACK_RESISTANCE, TeaLeaf.id("kb-res"),
                         0.05, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE, TeaLeaf.id("fall-distance"),
+                .addAttributeModifier(EntityAttributes.SAFE_FALL_DISTANCE, TeaLeaf.id("fall-distance"),
                         0.20, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     }
 

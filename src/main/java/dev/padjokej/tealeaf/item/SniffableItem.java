@@ -3,23 +3,25 @@ package dev.padjokej.tealeaf.item;
 import dev.padjokej.tealeaf.registry.EffectRegistry;
 import dev.padjokej.tealeaf.registry.SoundRegistry;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ConsumableComponents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.item.consume.UseAction;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class SniffableItem extends ConsumableItem {
 
+    // FIXME check if this produces sound
     public SniffableItem(Settings settings) {
         super(settings);
-
+        settings.component(DataComponentTypes.CONSUMABLE, ConsumableComponents.drink().sound(RegistryEntry.of(SoundRegistry.SNIFFING.get())).build());
     }
 
     @Override
@@ -54,30 +56,18 @@ public class SniffableItem extends ConsumableItem {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack heldStack = user.getStackInHand(hand);
         if (heldStack.get(DataComponentTypes.FOOD) != null) {
             if (user.canConsume(heldStack.get(DataComponentTypes.FOOD).canAlwaysEat())) {
                 user.setCurrentHand(hand);
 
-                return TypedActionResult.consume(heldStack);
+                return ActionResult.CONSUME;
             } else {
-                return TypedActionResult.fail(heldStack);
+                return ActionResult.FAIL;
             }
         }
 
         return ItemUsage.consumeHeldItem(world, user, hand);
     }
-
-    @Override
-    public SoundEvent getDrinkSound() {
-        return SoundRegistry.SNIFFING.get();
-    }
-
-    @Override
-    public SoundEvent getEatSound() {
-        return SoundRegistry.SNIFFING.get();
-    }
-
-
 }
