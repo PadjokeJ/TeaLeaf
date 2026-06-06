@@ -7,7 +7,7 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class FragranceEffect extends StatusEffect {
     public FragranceEffect() {
-        super(StatusEffectCategory.BENEFICIAL, 0);
+        super(StatusEffectCategory.BENEFICIAL, 0xD3AF37);
 
         this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "dab24cbc-7bff-4ae5-b5f6-2733328e385e",
                         0.15, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
