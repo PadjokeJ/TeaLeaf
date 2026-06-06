@@ -11,8 +11,7 @@ import net.minecraft.world.World;
 
 public class DrinkableItem extends ConsumableItem {
 
-    public DrinkableItem(Settings settings)
-    {
+    public DrinkableItem(Settings settings) {
         super(settings);
     }
 

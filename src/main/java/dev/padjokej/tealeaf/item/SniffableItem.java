@@ -36,8 +36,7 @@ public class SniffableItem extends ConsumableItem
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient()) {
             affectConsumer(stack, world, user);
-            user.addStatusEffect(new StatusEffectInstance(EffectRegistry.FRAGRANCE)); // FIXME
-
+            user.addStatusEffect(new StatusEffectInstance(EffectRegistry.FRAGRANCE, 200, 4));
         }
 
         ItemStack container = stack.getRecipeRemainder();
