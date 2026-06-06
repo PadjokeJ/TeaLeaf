@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:jungle_leaves"
+      "item": "minecraft:birch_leaves"
     }
   ],
   "result": {
-    "item": "tealeaf:jungle_tea_leaf",
+    "id": "tealeaf:birch_tea_leaf",
     "count": 9
   }
 }

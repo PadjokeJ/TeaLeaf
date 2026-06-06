@@ -16,11 +16,6 @@ public class DrinkableItem extends ConsumableItem {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return 32;
-    }
-
-    @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.DRINK;
     }

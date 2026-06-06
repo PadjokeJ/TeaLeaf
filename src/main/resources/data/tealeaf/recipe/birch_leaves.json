@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    },
+    {
+      "item": "tealeaf:birch_tea_leaf"
+    }
+  ],
+  "result": {
+    "id": "minecraft:birch_leaves",
+    "count": 1
+  }
+}

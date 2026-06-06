@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    },
+    {
+      "item": "tealeaf:spruce_tea_leaf"
+    }
+  ],
+  "result": {
+    "id": "minecraft:spruce_leaves",
+    "count": 1
+  }
+}

@@ -1,6 +1,7 @@
 package dev.padjokej.tealeaf.block.teapot;
 
 import com.mojang.serialization.MapCodec;
+import dev.padjokej.tealeaf.TeaLeaf;
 import dev.padjokej.tealeaf.entity.ModBlockEntities;
 import dev.padjokej.tealeaf.entity.TeapotBlockEntity;
 import dev.padjokej.tealeaf.item.ModItems;
@@ -30,21 +31,20 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 
-public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider  {
+public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final MapCodec<TeaPotBlock> CODEC = createCodec(TeaPotBlock::new);
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(4.0, 1.0, 4.0, 12.0, 6.0, 12.0);
 
-    public static final VoxelShape WEST_SHAPE  =     Block.createCuboidShape(3.0, 1.0, 3.0, 12.0, 6.0, 12.0);
-    public static final VoxelShape EAST_SHAPE  =     Block.createCuboidShape(4.0, 1.0, 4.0, 13.0, 6.0, 13.0);
-    public static final VoxelShape NORTH_SHAPE =     Block.createCuboidShape(4.0, 1.0, 3.0, 13.0, 6.0, 12.0);
-    public static final VoxelShape SOUTH_SHAPE =     Block.createCuboidShape(3.0, 1.0, 4.0, 12.0, 6.0, 13.0);
+    public static final VoxelShape WEST_SHAPE = Block.createCuboidShape(3.0, 1.0, 3.0, 12.0, 6.0, 12.0);
+    public static final VoxelShape EAST_SHAPE = Block.createCuboidShape(4.0, 1.0, 4.0, 13.0, 6.0, 13.0);
+    public static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(4.0, 1.0, 3.0, 13.0, 6.0, 12.0);
+    public static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(3.0, 1.0, 4.0, 12.0, 6.0, 13.0);
 
-    public TeaPotBlock(Settings settings)
-    {
+    public TeaPotBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)));
+        this.setDefaultState((BlockState) ((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)));
     }
 
     @Override
@@ -55,8 +55,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-
-        return ((BlockState)this.getDefaultState()).with(FACING, ctx.getHorizontalPlayerFacing());
+        return ((BlockState) this.getDefaultState()).with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -64,7 +63,7 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch ((Direction)state.get(FACING)) {
+        switch ((Direction) state.get(FACING)) {
             case SOUTH -> {
                 return SOUTH_SHAPE;
             }
@@ -98,52 +97,52 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
 
     /* BLOCK ENTITY */
     @Override
-    public BlockRenderType getRenderType(BlockState state)
-    {
+    public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos,
-                              PlayerEntity player, BlockHitResult hit) {
+                                 PlayerEntity player, BlockHitResult hit) {
         Hand hand = player.getActiveHand();
-        if (!world.isClient)
-        {
-            if(world.getBlockEntity(pos) instanceof TeapotBlockEntity teapotBlockEntity)
-            {
-                if(player.getStackInHand(hand).getItem() == Items.WATER_BUCKET && teapotBlockEntity.hasWater == 0)
-                {
+        if (!world.isClient) {
+            if (world.getBlockEntity(pos) instanceof TeapotBlockEntity teapotBlockEntity) {
+                if (player.getStackInHand(hand).getItem() == Items.WATER_BUCKET && teapotBlockEntity.hasWater == 0) {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(Items.BUCKET)));
                     teapotBlockEntity.addWater();
 
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return ActionResult.SUCCESS;
                 }
-                if(player.getStackInHand(hand).getItem() == Items.BUCKET && teapotBlockEntity.hasWater == 1)
-                {
+                if (player.getStackInHand(hand).getItem() == Items.BUCKET && teapotBlockEntity.hasWater == 1) {
                     player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(Items.WATER_BUCKET)));
                     teapotBlockEntity.removeWater();
 
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return ActionResult.SUCCESS;
                 }
-                if(player.getStackInHand(hand).getItem() == ModItems.TEA_CUP && teapotBlockEntity.teaResult > 0)
-                {
-                    switch (teapotBlockEntity.teaResult)
-                    {
-                        case 1: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.ACACIA_TEA)));
+                if (player.getStackInHand(hand).getItem() == ModItems.TEA_CUP && teapotBlockEntity.teaResult > 0) {
+                    switch (teapotBlockEntity.teaResult) {
+                        case 1:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.ACACIA_TEA)));
                             break;
-                        case 2: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.BIRCH_TEA)));
+                        case 2:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.BIRCH_TEA)));
                             break;
-                        case 3: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.DARK_OAK_TEA)));
+                        case 3:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.DARK_OAK_TEA)));
                             break;
-                        case 4: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
+                        case 4:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
                             break;
-                        case 5: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_TEA)));
+                        case 5:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_TEA)));
                             break;
-                        case 6: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
+                        case 6:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
                             break;
-                        case 7: player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
+                        case 7:
+                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
                             break;
                     }
 
@@ -153,33 +152,40 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                     teapotBlockEntity.teaResult = 0;
                     teapotBlockEntity.teaType = 0;
                 }
-                boolean hasLeafItem = false;
-                switch (player.getStackInHand(hand).getItem().toString())
-                {
-                    case "acacia_tea_leaf": teapotBlockEntity.addTealeaf(1);
-                        hasLeafItem = true;
-                        break;
-                    case "birch_tea_leaf": teapotBlockEntity.addTealeaf(2);
-                        hasLeafItem = true;
-                        break;
-                    case "dark_oak_tea_leaf": teapotBlockEntity.addTealeaf(3);
-                        hasLeafItem = true;
-                        break;
-                    case "jungle_tea_leaf": teapotBlockEntity.addTealeaf(4);
-                        hasLeafItem = true;
-                        break;
-                    case "mangrove_tea_leaf": teapotBlockEntity.addTealeaf(5);
-                        hasLeafItem = true;
-                        break;
-                    case "oak_tea_leaf": teapotBlockEntity.addTealeaf(6);
-                        hasLeafItem = true;
-                        break;
-                    case "spruce_tea_leaf": teapotBlockEntity.addTealeaf(7);
-                        hasLeafItem = true;
-                        break;
-                }
-                if (!player.getAbilities().creativeMode && hasLeafItem)
-                {
+                boolean hasLeafItem;
+
+                hasLeafItem = switch (player.getStackInHand(hand).getItem().toString()) {
+                    case "tealeaf:acacia_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(1);
+                        yield true;
+                    }
+                    case "tealeaf:birch_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(2);
+                        yield true;
+                    }
+                    case "tealeaf:dark_oak_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(3);
+                        yield true;
+                    }
+                    case "tealeaf:jungle_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(4);
+                        yield true;
+                    }
+                    case "tealeaf:mangrove_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(5);
+                        yield true;
+                    }
+                    case "tealeaf:oak_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(6);
+                        yield true;
+                    }
+                    case "tealeaf:spruce_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(7);
+                        yield true;
+                    }
+                    default -> false;
+                };
+                if (!player.getAbilities().creativeMode && hasLeafItem) {
                     player.getStackInHand(hand).decrement(1);
                 }
             }
@@ -189,14 +195,13 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state)
-    {
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new TeapotBlockEntity(pos, state);
     }
+
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
-    {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return validateTicker(type, ModBlockEntities.TEAPOT, TeapotBlockEntity::tick);
     }
 

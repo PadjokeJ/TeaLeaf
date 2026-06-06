@@ -4,9 +4,8 @@ import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-public class ModItems
-{
+
+public class ModItems {
     public static final Item TEA_CUP = registerItem("tea_cup",
             new Item(new Item.Settings()));
 
@@ -40,8 +39,8 @@ public class ModItems
     public static final Item MANGROVE_TEA = registerItem("mangrove_tea",
             new DrinkableItem(new Item.Settings().recipeRemainder(ModItems.TEA_CUP)));
 
-    private static Item registerItem(String name, Item item){
-        return Registry.register(Registries.ITEM, new Identifier(TeaLeaf.MOD_ID,name), item);
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(Registries.ITEM, TeaLeaf.id(name), item);
     }
 
     public static void registerModItems() {

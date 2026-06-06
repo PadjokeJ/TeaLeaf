@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    },
+    {
+      "item": "tealeaf:dark_oak_tea_leaf"
+    }
+  ],
+  "result": {
+    "id": "minecraft:dark_oak_leaves",
+    "count": 1
+  }
+}

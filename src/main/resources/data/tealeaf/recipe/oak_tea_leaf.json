@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:spruce_leaves"
+      "item": "minecraft:oak_leaves"
     }
   ],
   "result": {
-    "item": "tealeaf:spruce_tea_leaf",
+    "id": "tealeaf:oak_tea_leaf",
     "count": 9
   }
 }

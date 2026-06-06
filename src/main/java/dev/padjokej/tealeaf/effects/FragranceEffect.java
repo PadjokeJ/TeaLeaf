@@ -1,5 +1,6 @@
 package dev.padjokej.tealeaf.effects;
 
+import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -9,11 +10,11 @@ public class FragranceEffect extends StatusEffect {
     public FragranceEffect() {
         super(StatusEffectCategory.BENEFICIAL, 0xD3AF37);
 
-        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "dab24cbc-7bff-4ae5-b5f6-2733328e385e",
+        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, TeaLeaf.id("speed"),
                         0.15, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "dab24cbc-7bff-4ae5-b5f6-2733328e385f",
+                .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, TeaLeaf.id("kb-res"),
                         0.05, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE, "dab24cbc-7bff-4ae5-b5f6-2733328e3860",
+                .addAttributeModifier(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE, TeaLeaf.id("fall-distance"),
                         0.20, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     }
 

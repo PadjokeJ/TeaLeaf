@@ -15,16 +15,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class SniffableItem extends ConsumableItem
-{
+public class SniffableItem extends ConsumableItem {
 
     public SniffableItem(Settings settings) {
         super(settings);
 
-    }
-    @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return 32;
     }
 
     @Override
@@ -57,6 +52,7 @@ public class SniffableItem extends ConsumableItem
             return stack;
         }
     }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack heldStack = user.getStackInHand(hand);

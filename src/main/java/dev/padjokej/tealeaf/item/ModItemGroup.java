@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
-    public static ItemGroup TEALEAF = Registry.register(Registries.ITEM_GROUP, new Identifier(TeaLeaf.MOD_ID, "tealeaf"),
+    public static ItemGroup TEALEAF = Registry.register(Registries.ITEM_GROUP, TeaLeaf.id("tealeaf"),
             FabricItemGroup.builder()
                     .displayName(Text.translatable("itemGroup.tealeaf.tealeaf"))
                     .icon(() -> new ItemStack(ModItems.OAK_TEALEAF)).entries((displayContext, entries) -> {
