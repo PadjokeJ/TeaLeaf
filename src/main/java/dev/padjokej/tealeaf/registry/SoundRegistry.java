@@ -3,26 +3,24 @@ package dev.padjokej.tealeaf.registry;
 import dev.padjokej.tealeaf.TeaLeaf;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 
-public enum SoundRegistry {
-    SNIFFING("sniff");
+import java.util.logging.Logger;
 
-    private final String pathName;
-    private final SoundEvent soundEvent;
+public class SoundRegistry {
+    public static final RegistryEntry<SoundEvent> SNIFFING = register("sniff");
 
-    SoundRegistry(String pathName) {
-        this.pathName = pathName;
-        this.soundEvent = SoundEvent.of(TeaLeaf.id(this.pathName));
+    private static RegistryEntry<SoundEvent> register(String pathName) {
+        Identifier id = TeaLeaf.id(pathName);
+
+        SoundEvent soundEvent = SoundEvent.of(id);
+        return Registry.registerReference(Registries.SOUND_EVENT, id, soundEvent);
     }
 
     public static void registerAll() {
-        for (SoundRegistry value : values()) {
-            Registry.register(Registries.SOUND_EVENT, TeaLeaf.id(value.pathName), value.soundEvent);
-        }
-    }
-
-    public SoundEvent get() {
-        return soundEvent;
+        TeaLeaf.LOGGER.info("Registering sounds !");
     }
 }
