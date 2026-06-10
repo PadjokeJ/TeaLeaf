@@ -26,14 +26,12 @@ public class TeapotBlockEntity extends BlockEntity {
     private int maxBoilTimer = 200;
     public int teaResult;
     public int hasWater;
-    public TeapotBlockEntity(BlockPos pos, BlockState state)
-    {
+
+    public TeapotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TEAPOT, pos, state);
-        this.propertyDelegate = new PropertyDelegate()
-        {
+        this.propertyDelegate = new PropertyDelegate() {
             @Override
-            public int get(int index)
-            {
+            public int get(int index) {
                 return switch (index) {
                     case 0 -> TeapotBlockEntity.this.level;
                     case 1 -> TeapotBlockEntity.this.teaType;
@@ -45,16 +43,26 @@ public class TeapotBlockEntity extends BlockEntity {
                 };
             }
 
-            public void set(int index, int value)
-            {
-                switch (index)
-                {
-                    case 0: TeapotBlockEntity.this.level = value; break;
-                    case 1: TeapotBlockEntity.this.teaType = value; break;
-                    case 2: TeapotBlockEntity.this.boilTimer = value; break;
-                    case 3: TeapotBlockEntity.this.maxBoilTimer = value; break;
-                    case 4: TeapotBlockEntity.this.teaResult = value; break;
-                    case 5: TeapotBlockEntity.this.hasWater = value; break;
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0:
+                        TeapotBlockEntity.this.level = value;
+                        break;
+                    case 1:
+                        TeapotBlockEntity.this.teaType = value;
+                        break;
+                    case 2:
+                        TeapotBlockEntity.this.boilTimer = value;
+                        break;
+                    case 3:
+                        TeapotBlockEntity.this.maxBoilTimer = value;
+                        break;
+                    case 4:
+                        TeapotBlockEntity.this.teaResult = value;
+                        break;
+                    case 5:
+                        TeapotBlockEntity.this.hasWater = value;
+                        break;
                 }
             }
 
@@ -65,9 +73,8 @@ public class TeapotBlockEntity extends BlockEntity {
         };
     }
 
-
     @Override
-    protected void writeNbt (NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         nbt.putInt("teapot.level", level);
         nbt.putInt("teapot.teaType", teaType);
@@ -75,8 +82,9 @@ public class TeapotBlockEntity extends BlockEntity {
         nbt.putInt("teapot.teaResult", teaResult);
         nbt.putInt("teapot.hasWater", hasWater);
     }
+
     @Override
-    public void readNbt (NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
         level = nbt.getInt("teapot.level");
         teaType = nbt.getInt("teapot.teaType");
@@ -86,16 +94,15 @@ public class TeapotBlockEntity extends BlockEntity {
 
     }
 
-    public void addWater ()
-    {
+    public void addWater() {
         hasWater = 1;
     }
-    public void removeWater ()
-    {
+
+    public void removeWater() {
         hasWater = 0;
     }
-    public void addTealeaf (int type)
-    {
+
+    public void addTealeaf(int type) {
         teaType = type;
     }
 
@@ -112,12 +119,9 @@ public class TeapotBlockEntity extends BlockEntity {
         return blockBelow instanceof AbstractFurnaceBlock && blockStateBelow.get(AbstractFurnaceBlock.LIT);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity)
-    {
-        if(!world.isClient)
-        {
-            if (entity.hasWater == 0)
-            {
+    public static void tick(World world, BlockPos pos, BlockState state, TeapotBlockEntity entity) {
+        if (!world.isClient) {
+            if (entity.hasWater == 0) {
                 entity.resetProgress();
                 markDirty(world, pos, state);
                 return;
@@ -130,7 +134,7 @@ public class TeapotBlockEntity extends BlockEntity {
                 if (entity.boilTimer >= entity.maxBoilTimer) {
                     entity.makeTea(entity.teaType);
                     part = ParticleTypes.CLOUD;
-                } else if (world instanceof ServerWorld){
+                } else if (world instanceof ServerWorld) {
                     world.playSound(null, pos, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 }
 
@@ -143,21 +147,18 @@ public class TeapotBlockEntity extends BlockEntity {
 
                     serverWorld.spawnParticles(part, particlePos.getX(), particlePos.getY() + 0.4, particlePos.getZ(), 1, 0, .2, 0, 0);
                 }
-            } else
-            {
+            } else {
                 entity.resetProgress();
                 markDirty(world, pos, state);
             }
         }
     }
 
-    private void makeTea(int type)
-    {
+    private void makeTea(int type) {
         this.teaResult = type;
     }
 
-    private void resetProgress()
-    {
+    private void resetProgress() {
         this.boilTimer = 0;
     }
 
