@@ -16,6 +16,7 @@ public class ModFoodComponents {
             .consumeSeconds(1.6F)
             .useAction(UseAction.EAT)
             .sound(SoundRegistry.SNIFFING)
+            .finishSound(SoundRegistry.SNIFFING)
             .consumeParticles(false)
             .consumeEffect(new ApplyEffectsConsumeEffect(new StatusEffectInstance(EffectRegistry.FRAGRANCE, 200, 4)))
             .build();
