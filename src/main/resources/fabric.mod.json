@@ -21,13 +21,15 @@
   "entrypoints": {
     "main": [
       "dev.padjokej.tealeaf.TeaLeaf"
+    ],"fabric-datagen": [
+      "dev.padjokej.tealeaf.TeaLeafDataGenEntrypoint"
     ]
   },
 
   "depends": {
     "fabricloader": ">=0.19.3",
     "fabric-api": "*",
-    "minecraft": "1.21.3",
+    "minecraft": "1.21.4",
     "java": ">=21"
   }
 }

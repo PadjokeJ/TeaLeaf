@@ -93,13 +93,6 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
         builder.add(FACING);
     }
 
-
-    /* BLOCK ENTITY */
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos,
                                  PlayerEntity player, BlockHitResult hit) {
