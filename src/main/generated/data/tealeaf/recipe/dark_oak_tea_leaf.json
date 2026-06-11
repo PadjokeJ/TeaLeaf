@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "minecraft:dark_oak_leaves"
   ],
   "result": {
-    "id": "tealeaf:dark_oak_tea_leaf",
-    "count": 9
+    "count": 9,
+    "id": "tealeaf:dark_oak_tea_leaf"
   }
 }

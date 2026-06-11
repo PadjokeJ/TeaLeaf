@@ -115,27 +115,22 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                 }
                 if (player.getStackInHand(hand).getItem() == ModItems.TEA_CUP && teapotBlockEntity.teaResult > 0) {
                     switch (teapotBlockEntity.teaResult) {
-                        case 1:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.ACACIA_TEA)));
-                            break;
-                        case 2:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.BIRCH_TEA)));
-                            break;
-                        case 3:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.DARK_OAK_TEA)));
-                            break;
-                        case 4:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
-                            break;
-                        case 5:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_TEA)));
-                            break;
-                        case 6:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
-                            break;
-                        case 7:
-                            player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
-                            break;
+                        case 1 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.ACACIA_TEA)));
+                        case 2 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.BIRCH_TEA)));
+                        case 3 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.DARK_OAK_TEA)));
+                        case 4 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.JUNGLE_TEA)));
+                        case 5 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.MANGROVE_TEA)));
+                        case 6 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.OAK_TEA)));
+                        case 7 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
+                        case 8 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.PALE_OAK_TEA)));
                     }
 
                     world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
@@ -173,6 +168,10 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                     }
                     case "tealeaf:spruce_tea_leaf" -> {
                         teapotBlockEntity.addTealeaf(7);
+                        yield true;
+                    }
+                    case "tealeaf:pale_oak_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(8);
                         yield true;
                     }
                     default -> false;

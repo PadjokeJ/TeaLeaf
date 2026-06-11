@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "minecraft:spruce_leaves"
   ],
   "result": {
-    "id": "tealeaf:spruce_tea_leaf",
-    "count": 9
+    "count": 9,
+    "id": "tealeaf:spruce_tea_leaf"
   }
 }

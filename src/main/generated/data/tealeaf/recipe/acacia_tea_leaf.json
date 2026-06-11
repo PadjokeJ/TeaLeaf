@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "minecraft:acacia_leaves"
   ],
   "result": {
-    "id": "tealeaf:acacia_tea_leaf",
-    "count": 9
+    "count": 9,
+    "id": "tealeaf:acacia_tea_leaf"
   }
 }

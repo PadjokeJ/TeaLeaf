@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:clay_ball"
+  },
   "pattern": [
     " # ",
     "# #",
     "###"
   ],
-  "key": {
-    "#": "minecraft:clay_ball"
-  },
   "result": {
-    "id": "tealeaf:teapot",
-    "count": 1
+    "count": 1,
+    "id": "tealeaf:teapot"
   }
 }

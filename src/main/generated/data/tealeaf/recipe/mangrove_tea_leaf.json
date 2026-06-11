@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "minecraft:mangrove_leaves"
   ],
   "result": {
-    "id": "tealeaf:mangrove_tea_leaf",
-    "count": 9
+    "count": 9,
+    "id": "tealeaf:mangrove_tea_leaf"
   }
 }

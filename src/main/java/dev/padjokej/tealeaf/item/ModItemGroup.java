@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
     public static ItemGroup TEALEAF = Registry.register(Registries.ITEM_GROUP, TeaLeaf.id("tealeaf"),
@@ -24,6 +23,7 @@ public class ModItemGroup {
                         entries.add(ModItems.MANGROVE_TEA);
                         entries.add(ModItems.OAK_TEA);
                         entries.add(ModItems.SPRUCE_TEA);
+                        entries.add(ModItems.PALE_OAK_TEA);
 
                         entries.add(ModItems.ACACIA_TEALEAF);
                         entries.add(ModItems.BIRCH_TEALEAF);
@@ -32,6 +32,7 @@ public class ModItemGroup {
                         entries.add(ModItems.MANGROVE_TEALEAF);
                         entries.add(ModItems.OAK_TEALEAF);
                         entries.add(ModItems.SPRUCE_TEALEAF);
+                        entries.add(ModItems.PALE_OAK_TEALEAF);
 
                         entries.add(ModItems.TEA_CUP);
 
@@ -47,6 +48,7 @@ public class ModItemGroup {
             entries.add(ModItems.MANGROVE_TEALEAF);
             entries.add(ModItems.OAK_TEALEAF);
             entries.add(ModItems.SPRUCE_TEALEAF);
+            entries.add(ModItems.PALE_OAK_TEALEAF);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
@@ -57,6 +59,7 @@ public class ModItemGroup {
             entries.add(ModItems.MANGROVE_TEA);
             entries.add(ModItems.OAK_TEA);
             entries.add(ModItems.SPRUCE_TEA);
+            entries.add(ModItems.PALE_OAK_TEA);
         });
     }
 }

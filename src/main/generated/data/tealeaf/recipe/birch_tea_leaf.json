@@ -1,10 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     "minecraft:birch_leaves"
   ],
   "result": {
-    "id": "tealeaf:birch_tea_leaf",
-    "count": 9
+    "count": 9,
+    "id": "tealeaf:birch_tea_leaf"
   }
 }

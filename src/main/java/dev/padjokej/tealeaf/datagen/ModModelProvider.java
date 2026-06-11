@@ -26,6 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.JUNGLE_TEA);
         itemModelGenerator.register(ModItems.MANGROVE_TEA);
         itemModelGenerator.register(ModItems.OAK_TEA);
+        itemModelGenerator.register(ModItems.PALE_OAK_TEA);
         itemModelGenerator.register(ModItems.SPRUCE_TEA);
 
         itemModelGenerator.register(ModItems.ACACIA_TEALEAF);
@@ -34,6 +35,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.JUNGLE_TEALEAF);
         itemModelGenerator.register(ModItems.MANGROVE_TEALEAF);
         itemModelGenerator.register(ModItems.OAK_TEALEAF);
+        itemModelGenerator.register(ModItems.PALE_OAK_TEALEAF);
         itemModelGenerator.register(ModItems.SPRUCE_TEALEAF);
     }
 }
