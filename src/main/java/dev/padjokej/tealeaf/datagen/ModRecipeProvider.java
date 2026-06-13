@@ -31,7 +31,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.OAK_TEALEAF, RecipeCategory.MISC, Items.OAK_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.SPRUCE_TEALEAF, RecipeCategory.MISC, Items.SPRUCE_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.PALE_OAK_TEALEAF, RecipeCategory.MISC, Items.PALE_OAK_LEAVES);
-                
+
+                offer2x2CompactingRecipe(RecipeCategory.MISC, Items.PINK_PETALS, ModItems.CHERRY_TEALEAF);
+
                 createShaped(RecipeCategory.MISC, ModItems.TEA_CUP, 4)
                         .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
                         .pattern("# #")
