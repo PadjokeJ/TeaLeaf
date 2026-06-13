@@ -45,24 +45,12 @@ public class TeapotBlockEntity extends BlockEntity {
 
             public void set(int index, int value) {
                 switch (index) {
-                    case 0:
-                        TeapotBlockEntity.this.level = value;
-                        break;
-                    case 1:
-                        TeapotBlockEntity.this.teaType = value;
-                        break;
-                    case 2:
-                        TeapotBlockEntity.this.boilTimer = value;
-                        break;
-                    case 3:
-                        TeapotBlockEntity.this.maxBoilTimer = value;
-                        break;
-                    case 4:
-                        TeapotBlockEntity.this.teaResult = value;
-                        break;
-                    case 5:
-                        TeapotBlockEntity.this.hasWater = value;
-                        break;
+                    case 0 -> TeapotBlockEntity.this.level = value;
+                    case 1 -> TeapotBlockEntity.this.teaType = value;
+                    case 2 -> TeapotBlockEntity.this.boilTimer = value;
+                    case 3 -> TeapotBlockEntity.this.maxBoilTimer = value;
+                    case 4 -> TeapotBlockEntity.this.teaResult = value;
+                    case 5 -> TeapotBlockEntity.this.hasWater = value;
                 }
             }
 
@@ -86,12 +74,11 @@ public class TeapotBlockEntity extends BlockEntity {
     @Override
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        level = nbt.getInt("teapot.level");
-        teaType = nbt.getInt("teapot.teaType");
-        boilTimer = nbt.getInt("teapot.boilTimer");
-        teaResult = nbt.getInt("teapot.teaResult");
-        hasWater = nbt.getInt("teapot.hasWater");
-
+        level = nbt.getInt("teapot.level").orElse(0);
+        teaType = nbt.getInt("teapot.teaType").orElse(0);
+        boilTimer = nbt.getInt("teapot.boilTimer").orElse(0);
+        teaResult = nbt.getInt("teapot.teaResult").orElse(0);
+        hasWater = nbt.getInt("teapot.hasWater").orElse(0);
     }
 
     public void addWater() {
