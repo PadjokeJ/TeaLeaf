@@ -15,6 +15,7 @@ def42621399521360d86e9e6adb14a40556d27e0 data/tealeaf/advancement/recipes/misc/m
 cd0b339868704b57b1d9c72c4f26a3a71d32303a data/tealeaf/advancement/recipes/misc/oak_tea_leaf.json
 7b0d30bb1ec88a31b0bc5edc4ecc22a1f195ef2b data/tealeaf/advancement/recipes/misc/pale_oak_leaves.json
 9f1954a29082f0f22f53d8a6bf371cbb263dac6b data/tealeaf/advancement/recipes/misc/pale_oak_tea_leaf.json
+497748906fc4583388ac7608143fe31f185fa320 data/tealeaf/advancement/recipes/misc/pink_petals.json
 f7f22f3933abffcc9dea476a1882b9b829dd19c4 data/tealeaf/advancement/recipes/misc/spruce_leaves.json
 1c9eb3812c1b018d02fc9cd164005585b43fd57e data/tealeaf/advancement/recipes/misc/spruce_tea_leaf.json
 a95dd51c108bd4ca45c7e375cefd43ff650ebf59 data/tealeaf/advancement/recipes/misc/tea_cup.json
@@ -35,6 +36,7 @@ b63f67fd988f22e92bfb3eb5eb4d2789fa118c72 data/tealeaf/recipe/oak_leaves.json
 5d627a1691a3c3d7cc21177a117d0c49b2a423c5 data/tealeaf/recipe/oak_tea_leaf.json
 32af7731e8a61165099b43aab215b93cf575ee7b data/tealeaf/recipe/pale_oak_leaves.json
 be44b8a4d79d72a26eba28fca71fa6fea8267649 data/tealeaf/recipe/pale_oak_tea_leaf.json
+dc7c8bcadcd75f2c2c5bd763cbcf569487e335fb data/tealeaf/recipe/pink_petals.json
 8d2b7907d53fa3b5f0d51b414db2dd93ece34705 data/tealeaf/recipe/spruce_leaves.json
 6870dbccf61da482a048bfbd260b36d7a4e6d4a3 data/tealeaf/recipe/spruce_tea_leaf.json
 d5ea4f3024c8d12f9429dc826c88580e62f4eebc data/tealeaf/recipe/tea_cup.json
