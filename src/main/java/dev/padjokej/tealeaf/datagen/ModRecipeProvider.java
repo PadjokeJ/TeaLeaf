@@ -24,6 +24,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             public void generate() {
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.ACACIA_TEALEAF, RecipeCategory.MISC, Items.ACACIA_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.BIRCH_TEALEAF, RecipeCategory.MISC, Items.BIRCH_LEAVES);
+                offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.CHERRY_TEALEAF, RecipeCategory.MISC, Items.CHERRY_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.DARK_OAK_TEALEAF, RecipeCategory.MISC, Items.DARK_OAK_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.JUNGLE_TEALEAF, RecipeCategory.MISC, Items.JUNGLE_LEAVES);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.MANGROVE_TEALEAF, RecipeCategory.MISC, Items.MANGROVE_LEAVES);

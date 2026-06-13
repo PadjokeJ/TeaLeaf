@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cherry_leaves"
+  ],
+  "result": {
+    "count": 9,
+    "id": "tealeaf:cherry_tea_leaf"
+  }
+}

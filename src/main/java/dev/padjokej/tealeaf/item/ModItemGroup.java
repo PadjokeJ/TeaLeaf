@@ -18,6 +18,7 @@ public class ModItemGroup {
                     .icon(() -> new ItemStack(ModItems.OAK_TEALEAF)).entries((displayContext, entries) -> {
                         entries.add(ModItems.ACACIA_TEA);
                         entries.add(ModItems.BIRCH_TEA);
+                        entries.add(ModItems.CHERRY_TEA);
                         entries.add(ModItems.DARK_OAK_TEA);
                         entries.add(ModItems.JUNGLE_TEA);
                         entries.add(ModItems.MANGROVE_TEA);
@@ -27,6 +28,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.ACACIA_TEALEAF);
                         entries.add(ModItems.BIRCH_TEALEAF);
+                        entries.add(ModItems.CHERRY_TEALEAF);
                         entries.add(ModItems.DARK_OAK_TEALEAF);
                         entries.add(ModItems.JUNGLE_TEALEAF);
                         entries.add(ModItems.MANGROVE_TEALEAF);
@@ -43,6 +45,7 @@ public class ModItemGroup {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(ModItems.ACACIA_TEALEAF);
             entries.add(ModItems.BIRCH_TEALEAF);
+            entries.add(ModItems.CHERRY_TEALEAF);
             entries.add(ModItems.DARK_OAK_TEALEAF);
             entries.add(ModItems.JUNGLE_TEALEAF);
             entries.add(ModItems.MANGROVE_TEALEAF);
@@ -54,6 +57,7 @@ public class ModItemGroup {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(ModItems.ACACIA_TEA);
             entries.add(ModItems.BIRCH_TEA);
+            entries.add(ModItems.CHERRY_TEA);
             entries.add(ModItems.DARK_OAK_TEA);
             entries.add(ModItems.JUNGLE_TEA);
             entries.add(ModItems.MANGROVE_TEA);

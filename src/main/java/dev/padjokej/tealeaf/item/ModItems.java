@@ -28,6 +28,8 @@ public class ModItems {
             SniffableItem::new, new Item.Settings());
     public static final Item MANGROVE_TEALEAF = registerItem("mangrove_tea_leaf",
             SniffableItem::new, new Item.Settings());
+    public static final Item CHERRY_TEALEAF = registerItem("cherry_tea_leaf",
+            SniffableItem::new, new Item.Settings());
     public static final Item PALE_OAK_TEALEAF = registerItem("pale_oak_tea_leaf",
             SniffableItem::new, new Item.Settings());
 
@@ -44,6 +46,8 @@ public class ModItems {
     public static final Item DARK_OAK_TEA = registerItem("dark_oak_tea",
             DrinkableItem::new, new Item.Settings());
     public static final Item MANGROVE_TEA = registerItem("mangrove_tea",
+            DrinkableItem::new, new Item.Settings());
+    public static final Item CHERRY_TEA = registerItem("cherry_tea",
             DrinkableItem::new, new Item.Settings());
     public static final Item PALE_OAK_TEA = registerItem("pale_oak_tea",
             DrinkableItem::new, new Item.Settings());

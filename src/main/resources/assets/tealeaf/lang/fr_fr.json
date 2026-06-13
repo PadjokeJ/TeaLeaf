@@ -1,26 +1,36 @@
 {
-  "item.tealeaf.spruce_tea_leaf": "Feuille de thé de sapin",
-  "item.tealeaf.dark_oak_tea_leaf": "Feuille de thé de chêne noir",
-  "item.tealeaf.birch_tea_leaf": "Feuille de thé de bouleau",
-  "item.tealeaf.oak_tea_leaf": "Feuille de thé de chêne",
-  "item.tealeaf.mangrove_tea_leaf": "Feuille de thé de palétuvier",
-  "item.tealeaf.jungle_tea_leaf": "Feuille de thé de d'acajou",
+  "effect.tealeaf.fragrance": "Fragrance",
+
+  "item.tealeaf.acacia_tea": "Thé d'acacia",
   "item.tealeaf.acacia_tea_leaf": "Feuille de thé d'acacia",
 
-  "item.tealeaf.spruce_tea": "Thé de sapin",
-  "item.tealeaf.dark_oak_tea": "Thé de chêne noir",
   "item.tealeaf.birch_tea": "Thé de bouleau",
-  "item.tealeaf.oak_tea": "Thé de chêne",
-  "item.tealeaf.mangrove_tea": "Thé de palétuvier",
+  "item.tealeaf.birch_tea_leaf": "Feuille de thé de bouleau",
+
+  "item.tealeaf.cherry_tea": "Cherry Tea",
+  "item.tealeaf.cherry_tea_leaf": "Cherry Tea Leaf",
+
+  "item.tealeaf.dark_oak_tea": "Thé de chêne noir",
+  "item.tealeaf.dark_oak_tea_leaf": "Feuille de thé de chêne noir",
+
   "item.tealeaf.jungle_tea": "Thé d'acajou",
-  "item.tealeaf.acacia_tea": "Thé d'acacia",
+  "item.tealeaf.jungle_tea_leaf": "Feuille de thé de d'acajou",
+
+  "item.tealeaf.mangrove_tea": "Thé de palétuvier",
+  "item.tealeaf.mangrove_tea_leaf": "Feuille de thé de palétuvier",
+
+  "item.tealeaf.oak_tea": "Thé de chêne",
+  "item.tealeaf.oak_tea_leaf": "Feuille de thé de chêne",
+
+  "item.tealeaf.pale_oak_tea": "Thé de chêne pâle",
+  "item.tealeaf.pale_oak_tea_leaf": "Feuille de thé de chêne pâle",
+
+  "item.tealeaf.spruce_tea": "Thé de sapin",
+  "item.tealeaf.spruce_tea_leaf": "Feuille de thé de sapin",
 
   "item.tealeaf.tea_cup": "Tasse",
-
   "item.tealeaf.teapot": "Théière",
 
   "itemGroup.tealeaf.tealeaf": "TeaLeaf",
-
-  "effect.tealeaf.fragrance": "Fragrance",
   "tealeaf.subtitles.player.sniff": "Joueur reniffle une feuille de thé"
 }

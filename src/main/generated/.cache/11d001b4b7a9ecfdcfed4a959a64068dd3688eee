@@ -3,6 +3,8 @@
 92c0d051eead63a40986af3efd066f241f158167 data/tealeaf/advancement/recipes/misc/acacia_tea_leaf.json
 bdbb7572a5e3de8daf6adfaf23dfe26797bcbdd2 data/tealeaf/advancement/recipes/misc/birch_leaves.json
 55aa6b0adabef66cdecbe07a40c4d76dff48029f data/tealeaf/advancement/recipes/misc/birch_tea_leaf.json
+7d5f78544ed476046eacc96da662d703afa53f0b data/tealeaf/advancement/recipes/misc/cherry_leaves.json
+6c1dfc12b3bfe7c6f25e91e2fc85f4f89d824ec4 data/tealeaf/advancement/recipes/misc/cherry_tea_leaf.json
 1c94de8eb72abd5b5e59a024f75e1624acbc951f data/tealeaf/advancement/recipes/misc/dark_oak_leaves.json
 4374b49df8b7256c65787665af7bf3767380ba63 data/tealeaf/advancement/recipes/misc/dark_oak_tea_leaf.json
 b8a3ca54602b9b8bfc628d42519e26ae392774c0 data/tealeaf/advancement/recipes/misc/jungle_leaves.json
@@ -21,6 +23,8 @@ a95dd51c108bd4ca45c7e375cefd43ff650ebf59 data/tealeaf/advancement/recipes/misc/t
 e72d45605351cc43b7fc187acfb5a19e3d56115c data/tealeaf/recipe/acacia_tea_leaf.json
 a070bb0cfda6aa151c58038343f40acf5df0aa5b data/tealeaf/recipe/birch_leaves.json
 472b43d72b04f2c974ea0b0134a77ac23059af44 data/tealeaf/recipe/birch_tea_leaf.json
+d323f425a24d366934e6e8ea35457ec078fcde6b data/tealeaf/recipe/cherry_leaves.json
+f54682542a2e6da5079b2e039cd7574a12e3a578 data/tealeaf/recipe/cherry_tea_leaf.json
 9139913a76c3f06f859eabb5f1a44dd6b4fc0ea8 data/tealeaf/recipe/dark_oak_leaves.json
 ece076e3e42a0292941212d28ff376d0989abb30 data/tealeaf/recipe/dark_oak_tea_leaf.json
 3dcedda01e59f8deec06a562c45d0d49903cd82f data/tealeaf/recipe/jungle_leaves.json
@@ -33,5 +37,5 @@ b63f67fd988f22e92bfb3eb5eb4d2789fa118c72 data/tealeaf/recipe/oak_leaves.json
 be44b8a4d79d72a26eba28fca71fa6fea8267649 data/tealeaf/recipe/pale_oak_tea_leaf.json
 8d2b7907d53fa3b5f0d51b414db2dd93ece34705 data/tealeaf/recipe/spruce_leaves.json
 6870dbccf61da482a048bfbd260b36d7a4e6d4a3 data/tealeaf/recipe/spruce_tea_leaf.json
-6181e95c184ec43c3dba8a5c5a8666fa047c491a data/tealeaf/recipe/tea_cup.json
+d5ea4f3024c8d12f9429dc826c88580e62f4eebc data/tealeaf/recipe/tea_cup.json
 1d5b44eb8d7315e9a030830b4144ecccac85f0b3 data/tealeaf/recipe/teapot.json

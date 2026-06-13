@@ -131,6 +131,8 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                                 player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.SPRUCE_TEA)));
                         case 8 ->
                                 player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.PALE_OAK_TEA)));
+                        case 9 ->
+                                player.setStackInHand(hand, ItemUsage.exchangeStack(player.getStackInHand(hand), player, new ItemStack(ModItems.CHERRY_TEA)));
                     }
 
                     world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
@@ -150,6 +152,10 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                         teapotBlockEntity.addTealeaf(2);
                         yield true;
                     }
+                    case "tealeaf:cherry_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(9);
+                        yield true;
+                    }
                     case "tealeaf:dark_oak_tea_leaf" -> {
                         teapotBlockEntity.addTealeaf(3);
                         yield true;
@@ -166,12 +172,12 @@ public class TeaPotBlock extends BlockWithEntity implements BlockEntityProvider 
                         teapotBlockEntity.addTealeaf(6);
                         yield true;
                     }
-                    case "tealeaf:spruce_tea_leaf" -> {
-                        teapotBlockEntity.addTealeaf(7);
-                        yield true;
-                    }
                     case "tealeaf:pale_oak_tea_leaf" -> {
                         teapotBlockEntity.addTealeaf(8);
+                        yield true;
+                    }
+                    case "tealeaf:spruce_tea_leaf" -> {
+                        teapotBlockEntity.addTealeaf(7);
                         yield true;
                     }
                     default -> false;
